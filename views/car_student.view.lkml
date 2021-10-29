@@ -1,5 +1,5 @@
 view: car_student {
-  sql_table_name: dbo.CAR_Student ;;
+  sql_table_name: dbo.ssrs_CAR_Student_RPT ;;
 
   dimension: car_indicator_1_s1_denominator {
     type: string
