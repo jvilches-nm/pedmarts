@@ -266,19 +266,21 @@ view: car_student {
     sql: ${TABLE}."School Level" ;;
   }
 
-  dimension_group: school_year {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."School Year" ;;
+  dimension: school_year {
+    type: string
+    # timeframes: [
+    #   raw,
+    #   time,
+    #   date,
+    #   week,
+    #   month,
+    #   quarter,
+    #   year
+    # ]
+   sql: cast(YEAR(${TABLE}.school_year)-1 as varchar) +'-'+ cast(YEAR(${TABLE}.school_year) as varchar) ;;
+    #sql: ${TABLE}."School Year" ;;
   }
+
 
   dimension: science_proficiency {
     type: string
