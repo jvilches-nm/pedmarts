@@ -268,6 +268,7 @@ view: car_student {
 
   dimension: school_year {
     type: string
+    label: "School Year"
     # timeframes: [
     #   raw,
     #   time,
@@ -277,7 +278,7 @@ view: car_student {
     #   quarter,
     #   year
     # ]
-   sql: cast(YEAR(${TABLE}.school_year)-1 as varchar) +'-'+ cast(YEAR(${TABLE}.school_year) as varchar) ;;
+   sql: cast(YEAR(${TABLE}.SCHOOL_YEAR)-1 as varchar) +'-'+ cast(YEAR(${TABLE}.SCHOOL_YEAR) as varchar) ;;
     #sql: ${TABLE}."School Year" ;;
   }
 
