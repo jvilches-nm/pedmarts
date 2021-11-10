@@ -1,5 +1,5 @@
 view: car_student {
-  sql_table_name: dbo.CAR_Student ;;
+  sql_table_name: dbo.ssrs_CAR_Student_RPT ;;
 
   dimension: car_indicator_1_s1_denominator {
     type: string
@@ -266,19 +266,22 @@ view: car_student {
     sql: ${TABLE}."School Level" ;;
   }
 
-  dimension_group: school_year {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}."School Year" ;;
+  dimension: school_year {
+    type: string
+    label: "School Year"
+    # timeframes: [
+    #   raw,
+    #   time,
+    #   date,
+    #   week,
+    #   month,
+    #   quarter,
+    #   year
+    # ]
+   sql: cast(YEAR(${TABLE}.SCHOOL_YEAR)-1 as varchar) +'-'+ cast(YEAR(${TABLE}.SCHOOL_YEAR) as varchar) ;;
+    #sql: ${TABLE}."School Year" ;;
   }
+
 
   dimension: science_proficiency {
     type: string
