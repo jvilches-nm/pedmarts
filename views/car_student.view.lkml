@@ -266,22 +266,29 @@ view: car_student {
     sql: ${TABLE}."School Level" ;;
   }
 
+  # dimension: school_year {
+  #   type: string
+  #   #label: "School Year"
+  #   # timeframes: [
+  #   #   raw,
+  #   #   time,
+  #   #   date,
+  #   #   week,
+  #   #   month,
+  #   #   quarter,
+  #   #   year
+  #   # ]
+  # sql: cast(YEAR(${TABLE}.School_Year)-1 as varchar) +'-'+ cast(YEAR(${TABLE}.School_Year) as varchar) ;;
+  #   #sql: ${TABLE}."School Year" ;;
+  # }
+
+
   dimension: school_year {
     type: string
     label: "School Year"
-    # timeframes: [
-    #   raw,
-    #   time,
-    #   date,
-    #   week,
-    #   month,
-    #   quarter,
-    #   year
-    # ]
-   sql: cast(YEAR(${TABLE}.SCHOOL_YEAR)-1 as varchar) +'-'+ cast(YEAR(${TABLE}.SCHOOL_YEAR) as varchar) ;;
-    #sql: ${TABLE}."School Year" ;;
+    description: "The two years that the school year spans"
+    sql: cast(YEAR(${TABLE}.SCHOOL_YEAR)-1 as varchar) +'-'+ cast(YEAR(${TABLE}.SCHOOL_YEAR) as varchar) ;;
   }
-
 
   dimension: science_proficiency {
     type: string
