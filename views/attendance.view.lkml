@@ -1,8 +1,9 @@
 view: attendance {
   sql_table_name: dbo.ATTENDANCE ;;
 
-  dimension: attend {
-    type: number
+  measure: days_attended {
+    label: "Days Attended"
+    type: sum
     sql: ${TABLE}.ATTEND ;;
   }
 
@@ -16,8 +17,9 @@ view: attendance {
     sql: ${TABLE}.DISTRICT_NAME ;;
   }
 
-  dimension: enrolled {
-    type: number
+  measure: days_enrolled {
+    label: "Days Enrolled"
+    type: sum
     sql: ${TABLE}.ENROLLED ;;
   }
 
@@ -40,7 +42,6 @@ view: attendance {
     type: time
     timeframes: [
       raw,
-      time,
       date,
       week,
       month,
@@ -72,6 +73,7 @@ view: attendance {
 
   measure: count {
     type: count
+    hidden: yes
     drill_fields: [detail*]
   }
 
