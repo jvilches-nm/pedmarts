@@ -115,8 +115,10 @@ view: fc_matched {
     sql: ${TABLE}.ProviderCounty ;;
   }
 
-  dimension: school_year {
+  dimension: school_year_end_date {
     type: string
+    label: "School Year"
+    description: "Using STARS school year notation, e.g. 2022-06-30"
     sql: ${TABLE}.SchoolYear ;;
   }
 
