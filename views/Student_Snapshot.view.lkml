@@ -433,8 +433,20 @@ OS = Out of School"
 
   measure: count {
     type: count
-    drill_fields: [detail*]
+    drill_fields: [student_id]
   }
+
+  measure: count_student {
+    type: count
+    drill_fields: [student_id]
+  }
+
+measure: total_indian_student {
+  type: count
+  filters: [race_1: "American Indian/Alaskan Native"]
+
+}
+
 
   # ----- Sets of fields for drilling ------
   set: detail {

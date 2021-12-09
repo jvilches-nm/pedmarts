@@ -10,6 +10,7 @@ datagroup: rea_default_datagroup {
 
 persist_with: rea_default_datagroup
 
+
 explore: assessment_view {
 }
 
@@ -34,6 +35,11 @@ explore: program_fact {
 }
 
 explore: school_enroll {
+  join: stud_snapshot {
+    relationship: many_to_one
+    type:  left_outer
+    sql_on:  ${school_enroll.student_id} = ${stud_snapshot.student_id} ;;
+  }
 }
 
 explore: special_ed_snap {
@@ -41,6 +47,7 @@ explore: special_ed_snap {
 
 explore: stud_snapshot {
   label: "Student Snapshot"
+
 }
 
 explore: student {}

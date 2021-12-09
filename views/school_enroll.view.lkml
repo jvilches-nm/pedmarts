@@ -28,7 +28,7 @@ view: school_enroll {
     sql: ${TABLE}.ENROLL_DESC ;;
   }
 
-  dimension: location_id {
+  dimension: location_code {
     type: string
     label: "School Code"
     description: "PED 3 digit School ID"
@@ -48,6 +48,11 @@ view: school_enroll {
     sql: ${TABLE}.STUDENT_ID ;;
   }
 
+measure: count_student {
+  type: count
+  drill_fields: [student_id]
+
+}
   measure: count {
     type: count
     drill_fields: [student.student_id, student.student_name, student.district_name, student.location_name]
