@@ -70,8 +70,10 @@ view: fc_matched {
     sql: ${TABLE}."Involved Start Date" ;;
   }
 
-  dimension: last_name {
+  dimension: fc_name_last {
     type: string
+    label: "Name - Last"
+    description: "Student last name, as documented in the Foster Child Matched source data"
     sql: ${TABLE}.LastName ;;
   }
 
@@ -165,7 +167,7 @@ view: fc_matched {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-      last_name,
+      fc_name_last,
       first_name,
       district_name,
       location_name,

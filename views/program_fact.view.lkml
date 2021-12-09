@@ -38,6 +38,9 @@ view: program_fact {
 
   dimension: district_key {
     type: number
+    label: "District Key Stars"
+    description: "STARS database auto generated key for individual districts. The key is a unique identifier."
+    hidden: yes
     sql: ${TABLE}."DISTRICT KEY" ;;
   }
 
@@ -233,6 +236,8 @@ view: program_fact {
 
   dimension: location_key {
     type: number
+    label: "Location Key Stars"
+    description: "STARS database auto generated key for individual schools. The key is a unique identifier."
     sql: ${TABLE}."LOCATION KEY" ;;
   }
 
@@ -429,6 +434,8 @@ view: program_fact {
 
   dimension_group: school_year {
     type: time
+    label: "School Year"
+    description: "The school year is documented with the last day in the school year. "
     timeframes: [
       raw,
       time,

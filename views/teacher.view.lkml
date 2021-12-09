@@ -3,21 +3,58 @@ view: teacher {
 
   dimension: assignment {
     type: string
+    label: "Assignment"
+    description: "Staff Assignment Descriptions"
     sql: ${TABLE}.Assignment ;;
   }
 
   dimension: assignment_category {
     type: string
+    label: "Assignment Category"
+    description: " Grouping of Staff Assignment Codes
+    A. Administrators
+10, 11, 12, 13, 36
+
+B. Educational Assistant
+31, 31I, 32, 32I,33, 33I, 34, 34S, 34I, 34IS
+
+C. Healthcare
+01, 03, 07, 70
+
+D. Media Specialist
+76, 77, 78
+
+E. Non-Certified Personnel
+All Other Non-Certified Support Staff – Maintenance, Transportation, Food Service, IT, Facilities, Non-Certified Supervisors or Directors,Non-Certified Administrative Support Staff, Non-Certified School Support Staff
+
+F. Other Personnel
+
+G. Principals
+
+H. Related Service Personnel For Special Education (6-21 Year Olds)
+
+I. Related Service Personnel For Special Education (3-5 Year Olds)
+
+J. School Counselor
+
+K. Supervisors, Directors or Managers
+
+L.   Teachers"
     sql: ${TABLE}."Assignment Category" ;;
+
   }
 
   dimension: assignment_code {
     type: string
+    label: "Assignment Code"
+    description: "PED defined assignment or position codes."
     sql: ${TABLE}."Assignment Code" ;;
   }
 
   dimension_group: assignment {
     type: time
+    label: "Assignment Date"
+    description: "Indicator of report date."
     timeframes: [
       raw,
       time,
@@ -32,11 +69,14 @@ view: teacher {
 
   dimension: baccalaureate_degree_institution {
     type: string
+    label: "Baccalaureate Degree Institution"
+    description: "Baccalaureate Degree Institution of staff member."
     sql: ${TABLE}."Baccalaureate Degree Institution" ;;
   }
 
   dimension: baccalaureate_degree_institution_code {
     type: string
+    label: "Baccalaureate Degree Institution Code"
     sql: ${TABLE}."Baccalaureate Degree Institution Code" ;;
   }
 

@@ -3,6 +3,7 @@ view: discipline {
 
   dimension: discipline_infraction {
     type: string
+    label: "Infraction Description"
     sql: ${TABLE}."Discipline Infraction" ;;
   }
 
