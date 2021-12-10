@@ -1,40 +1,55 @@
 view: attendance {
   sql_table_name: dbo.ATTENDANCE ;;
 
-  measure: days_attended {
-    label: "Days Attended"
-    type: sum
-    sql: ${TABLE}.ATTEND ;;
+  dimension: student_id {
+    type: string
+    label: "Student ID"
+    description: "State issued student identification number."
+    primary_key: yes
+    # hidden: yes
+    sql: ${TABLE}.STUDENT_ID ;;
   }
+
 
   dimension: district_code {
     type: string
+    label: "District Code"
+    description: "PED defined three character district code."
     sql: ${TABLE}.DISTRICT_CODE ;;
   }
 
   dimension: district_name {
     type: string
+    label: "District Name - Short"
+    description: "The district short name. Examples: Alamogordo (vs Alamogordo Public Schools), Albuquerque (vs Albuquesrque Public Schools), "
     sql: ${TABLE}.DISTRICT_NAME ;;
   }
 
-  measure: days_enrolled {
-    label: "Days Enrolled"
-    type: sum
-    sql: ${TABLE}.ENROLLED ;;
-  }
 
-  dimension: location_id {
+  dimension: location_code {
     type: string
+    label: "School Code"
+    description: "PED defined three character location codes. "
     sql: ${TABLE}.LOCATION_ID ;;
   }
 
   dimension: location_name {
     type: string
+    label: "School Name"
+    description: "School Name"
     sql: ${TABLE}.LOCATION_NAME ;;
   }
 
-  dimension: org_type_code {
+  dimension: organization_type_desc {
     type: string
+    label: "Organization Type"
+    description: "Valid values:                                                                                                               Central Office
+                  Charter
+                  Home School
+                  Off-Site
+                  Private
+                  Public
+                  State supported"
     sql: ${TABLE}.ORG_TYPE_CODE ;;
   }
 
@@ -65,10 +80,18 @@ view: attendance {
     sql: ${TABLE}.SNAPSHOT_DATE ;;
   }
 
-  dimension: student_id {
-    type: string
-    # hidden: yes
-    sql: ${TABLE}.STUDENT_ID ;;
+  measure: days_attended {
+    label: "Days Attended"
+    description: "Total number of days within the Reporting Period that the student was marked as Present at the location."
+    type: sum
+    sql: ${TABLE}.ATTEND ;;
+  }
+
+  measure: days_enrolled {
+    label: "Days Enrolled"
+    description: "Total number of days within the Reporting Period that the student was counted as Enrolled at the location."
+    type: sum
+    sql: ${TABLE}.ENROLLED ;;
   }
 
   measure: count {

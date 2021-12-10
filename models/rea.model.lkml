@@ -15,6 +15,12 @@ explore: assessment_view {
 }
 
 explore: attendance {
+  join: stud_snapshot {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${attendance.student_id}=${stud_snapshot.student_id}
+            and ${attendance.school_year_date} = ${stud_snapshot.school_year_end_date};;
+  }
 }
 
 explore: car_student {
@@ -38,7 +44,7 @@ explore: school_enroll {
   join: stud_snapshot {
     relationship: many_to_one
     type:  left_outer
-    sql_on:  ${school_enroll.student_id} = ${stud_snapshot.student_id} ;;
+    sql_on:  ${school_enroll.student_id} = ${stud_snapshot.student_id}  and ${school_enroll.school_year}=${stud_snapshot.school_year_end_date};;
   }
 }
 
