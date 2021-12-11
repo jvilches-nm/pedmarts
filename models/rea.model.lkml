@@ -19,7 +19,8 @@ explore: attendance {
     relationship: many_to_one
     type: left_outer
     sql_on: ${attendance.student_id}=${stud_snapshot.student_id}
-            and ${attendance.school_year_date} = ${stud_snapshot.school_year_end_date};;
+   and ${attendance.snapshot_date} = ${stud_snapshot.snapshot_date} and ${attendance.district_code} = ${stud_snapshot.district_code};;
+   # and ${attendance.school_year} = ${stud_snapshot.school_year_end_date};;
   }
 }
 

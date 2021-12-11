@@ -5,7 +5,6 @@ view: attendance {
     type: string
     label: "Student ID"
     description: "State issued student identification number."
-    primary_key: yes
     # hidden: yes
     sql: ${TABLE}.STUDENT_ID ;;
   }
