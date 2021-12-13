@@ -1,5 +1,5 @@
 view: fc_matched {
-  sql_table_name: dbo.FC MATCHED ;;
+  sql_table_name: dbo.[FC MATCHED] ;;
 
   dimension_group: date_created {
     type: time

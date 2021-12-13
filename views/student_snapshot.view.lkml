@@ -293,9 +293,9 @@ OS = Out of School"
   }
 
   dimension: school_year_end_date {
-    type: string
+    type: date
     description: "The last day in the school year"
-    hidden: yes
+    #hidden: yes
     sql: ${TABLE}.SCHOOL_YEAR ;;
   }
 
