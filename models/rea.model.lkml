@@ -34,6 +34,12 @@ explore: fact_tests {
 }
 
 explore: fc_matched {
+  join: stud_snapshot {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${fc_matched.fc_student_id} = ${stud_snapshot.student_id} ;;
+
+  }
 }
 
 explore: migrant {}

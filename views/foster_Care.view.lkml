@@ -16,8 +16,10 @@ view: fc_matched {
     sql: ${TABLE}.DateCreated ;;
   }
 
-  dimension_group: dateof_birth {
+  dimension_group: fc_date_of_birth {
     type: time
+    label: "Date of Birth"
+    description: "Date of Birth, as documented in the Foster Child Matched source data"
     timeframes: [
       raw,
       time,
@@ -30,33 +32,43 @@ view: fc_matched {
     sql: ${TABLE}.DateofBirth ;;
   }
 
-  dimension: district_code {
+  dimension: fc_district_code {
     type: string
+    label: "District Code"
+    description: "PED defined three character district code."
     sql: ${TABLE}."District Code" ;;
   }
 
-  dimension: district_name {
+  dimension: fc_district_name {
     type: string
+    label: "District Name - Short"
+    description: "The district short name. Examples: Alamogordo (vs Alamogordo Public Schools), Albuquerque (vs Albuquesrque Public Schools), "
     sql: ${TABLE}.DistrictName ;;
   }
 
   dimension: family_id {
     type: string
+    label: "Family ID"
     sql: ${TABLE}.FamilyID ;;
   }
 
-  dimension: first_name {
+  dimension: fc_name_first {
     type: string
+    label: "Name - First"
+    description: "Student first name, as documented in the Foster Child Matched source data"
     sql: ${TABLE}.FirstName ;;
   }
 
-  dimension: gender {
+  dimension: fc_gender {
     type: string
+    label: "Birth Gender"
+    description: "Gender, as documented in the Foster Child Matched source data"
     sql: ${TABLE}.Gender ;;
   }
 
-  dimension_group: involved_start {
+  dimension_group: involved_start_date {
     type: time
+    label: "Involved_Start"
     timeframes: [
       raw,
       date,
@@ -79,11 +91,15 @@ view: fc_matched {
 
   dimension: location_id {
     type: string
+    label: "School Code"
+    description: "PED defined three character location codes. "
     sql: ${TABLE}."Location ID" ;;
   }
 
   dimension: location_name {
     type: string
+    label: "School Name"
+    description: "School name."
     sql: ${TABLE}.LocationName ;;
   }
 
@@ -92,13 +108,16 @@ view: fc_matched {
     sql: ${TABLE}.MatchCode ;;
   }
 
-  dimension: mi {
+  dimension: fc_name_mi {
     type: string
+    label: "Name - MI"
+    description: "Student middle initial, as documented in the Foster Child Matched source data"
     sql: ${TABLE}.MI ;;
   }
 
   dimension: month {
     type: string
+    label: "Month"
     sql: ${TABLE}.Month ;;
   }
 
@@ -109,15 +128,17 @@ view: fc_matched {
 
   dimension: person_id {
     type: string
+    label: "Person ID"
     sql: ${TABLE}.PersonID ;;
   }
 
   dimension: provider_county {
     type: string
+    label: "Provider County"
     sql: ${TABLE}.ProviderCounty ;;
   }
 
-  dimension: school_year_end_date {
+  dimension: school_year_date {
     type: string
     label: "School Year"
     description: "Using STARS school year notation, e.g. 2022-06-30"
@@ -126,6 +147,8 @@ view: fc_matched {
 
   dimension_group: stars_dob {
     type: time
+    label: "Date of Birth STARS"
+    description: "Date of Birth, as documented in STARS database"
     timeframes: [
       raw,
       time,
@@ -138,23 +161,31 @@ view: fc_matched {
     sql: ${TABLE}.Stars_DOB ;;
   }
 
-  dimension: stars_first_name {
+  dimension: student_name_first {
     type: string
+    label: "Name - First STARS"
+    description: "Student first name, as documented in STARS database"
     sql: ${TABLE}.Stars_FirstName ;;
   }
 
-  dimension: stars_last_name {
+  dimension: student_name_last {
     type: string
+    label: "Name - Last STARS"
+    description: "Student last name, as documented in STARS database"
     sql: ${TABLE}.Stars_LastName ;;
   }
 
-  dimension: stars_mi {
+  dimension: student_name_mi {
     type: string
+    label: "Name - MI STARS"
+    description: "Student middle initial, as documented in STARS database"
     sql: ${TABLE}.Stars_MI ;;
   }
 
-  dimension: student_id {
+  dimension: fc_student_id {
     type: string
+    label: "Student ID"
+    description: "State issued student identification number (confirm = STARS ID)"
     # hidden: yes
     sql: ${TABLE}."Student ID" ;;
   }
@@ -165,18 +196,21 @@ view: fc_matched {
   }
 
   # ----- Sets of fields for drilling ------
+        # student.student_id,
+      # student.student_name,
+      # student.district_name,
+      # student.location_name
   set: detail {
     fields: [
       fc_name_last,
-      first_name,
-      district_name,
+      fc_name_first,
+      fc_district_name,
       location_name,
-      stars_last_name,
-      stars_first_name,
-      student.student_id,
-      student.student_name,
-      student.district_name,
-      student.location_name
+      student_name_last,
+      student_name_first,
+      fc_student_id
+
+
     ]
   }
 }
