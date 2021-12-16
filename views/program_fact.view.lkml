@@ -1,38 +1,66 @@
 view: program_fact {
-  sql_table_name: dbo.PROGRAM FACT ;;
+  sql_table_name: dbo.[PROGRAM FACT] ;;
 
   dimension: alternate_student_id {
     type: string
+    label: "Alternate Student ID"
+    hidden: yes
     sql: ${TABLE}."Alternate Student ID" ;;
   }
 
   dimension: credential_type {
     type: string
+    label: "Credential Type"
+    description: "Values:
+    NULL
+    Credentialed
+    Not Credentialed"
     sql: ${TABLE}."Credential Type" ;;
   }
 
   dimension: credential_type_code {
     type: string
+    label: "Credential Type Code"
+    description: "Values:
+    NULL
+    Y
+    N"
     sql: ${TABLE}."Credential Type Code" ;;
   }
 
   dimension: diploma_type {
     type: string
+    label: "Diploma Type"
+    description: "Values:
+    Type of diploma. eg.,
+      Ability Pathway (special ed only)
+    , Career Pathway (special ed only)
+    , Cert. of Course Work (not for sped)
+    , Cert. of Course Work Completed
+    , Certificate of Course Work Completed
+    , Diploma (standard)"
     sql: ${TABLE}."Diploma Type" ;;
   }
 
   dimension: diploma_type_code {
     type: string
+    label: "Diploma Type Code"
     sql: ${TABLE}."Diploma Type Code" ;;
   }
 
   dimension: displaced_homemaker {
     type: string
+    label: "Displaced Homemaker"
+    description: "Values:
+    No
+    Yes"
     sql: ${TABLE}."Displaced Homemaker" ;;
   }
 
   dimension: district_code {
     type: string
+    label: "District Code"
+    description: "PED defined three character district code."
     sql: ${TABLE}."District Code" ;;
   }
 
@@ -46,66 +74,108 @@ view: program_fact {
 
   dimension: district_legal_name {
     type: string
+    label: "District Name - Short"
+    description: "The district short name. Examples: Alamogordo (vs Alamogordo Public Schools), Albuquerque (vs Albuquesrque Public Schools), "
     sql: ${TABLE}."District Legal Name" ;;
   }
 
-  dimension: district_operational_status_code {
+  dimension: district_operational_status {
     type: string
+    label: "District Operational Status "
+    description: "Values: NEW
+                          OPEN"
     sql: ${TABLE}."District Operational Status Code" ;;
   }
 
   dimension: district_organization_type {
     type: string
+    label: "District Organization Type"
+    description: " Values: State Charter
+                           State District
+                           State Supported"
     sql: ${TABLE}."District Organization Type" ;;
   }
 
   dimension: dwelling_arrangement {
     type: string
+    label: "Dwelling Arrangement"
+    description: "Values:
+    NULL
+    Double-Up
+    Hotels/Motels
+    O
+    Other/Unknown
+    Shelters
+    Unsheltered"
     sql: ${TABLE}."Dwelling Arrangement" ;;
   }
 
   dimension: dwelling_arrangement_code {
     type: string
+    label: "Dwelling Arrangement Code"
+    description: "Values:
+    NULL
+    D
+    HM
+    O
+    O
+    S
+    U"
     sql: ${TABLE}."Dwelling Arrangement Code" ;;
   }
 
   dimension: economically_disadvantaged_status {
     type: string
+    label: "Economically Disadvantaged Status"
     sql: ${TABLE}."Economically Disadvantaged Status" ;;
   }
 
   dimension: economically_disadvantaged_status_code {
     type: string
+    label: "Economically Disadvantaged Status Code"
     sql: ${TABLE}."Economically Disadvantaged Status Code" ;;
   }
 
-  dimension: ell_program_eligibility {
+  dimension: ell_eligibility {
     type: string
+    label: "ELL Program Eligibility"
+    description: "Values:
+    NULL
+    0
+    English Language Learner
+    Not an English Language Learner
+    Not an English Learner
+    Y"
     sql: ${TABLE}."ELL Program Eligibility" ;;
   }
 
-  dimension: ell_program_eligibility_code {
+  dimension: ell_eligibility_code {
     type: string
+    label: "ELL Program Eligibility Code"
     sql: ${TABLE}."ELL Program Eligibility Code" ;;
   }
 
-  dimension: ell_program_participation {
+  dimension: ell_participation {
     type: string
+    label: "ELL Program Participation"
     sql: ${TABLE}."ELL Program Participation" ;;
   }
 
-  dimension: ell_program_participation_code {
+  dimension: ell_participation_code {
     type: string
+    label: "ELL Program Participation Code"
     sql: ${TABLE}."ELL Program Participation Code" ;;
   }
 
   dimension: english_proficiency {
     type: string
+    label: "English Proficiency"
     sql: ${TABLE}."English Proficiency" ;;
   }
 
   dimension: english_proficiency_code {
     type: string
+    label: "English Proficiency Code"
     sql: ${TABLE}."English Proficiency Code" ;;
   }
 
@@ -136,11 +206,19 @@ view: program_fact {
 
   dimension: gifted_participation {
     type: string
+    label: "Gifted Participation"
+    description: "Values:
+    No
+    Yes"
     sql: ${TABLE}."Gifted Participation" ;;
   }
 
   dimension: gifted_participation_code {
     type: string
+    label: "Gifted Participation Code"
+    description:  "Values:
+    N
+    Y"
     sql: ${TABLE}."Gifted Participation Code" ;;
   }
 
@@ -161,6 +239,8 @@ view: program_fact {
 
   dimension: grade_level_range {
     type: string
+    label: "Grade Level Range"
+    description: "Range of Grade level at given location i.e. 0101, 0102, 0103, 0105 and so on."
     sql: ${TABLE}."Grade Level Range" ;;
   }
 
@@ -211,6 +291,7 @@ view: program_fact {
 
   dimension: improvement_status_code {
     type: string
+    label: "Improvement Status Code"
     sql: ${TABLE}."Improvement Status Code" ;;
   }
 
@@ -229,8 +310,10 @@ view: program_fact {
     sql: ${TABLE}."Location AYP Status Code" ;;
   }
 
-  dimension: location_id {
+  dimension: location_code {
     type: string
+    label: "School Code"
+    description: "PED defined three character location codes. "
     sql: ${TABLE}."Location ID" ;;
   }
 
@@ -241,18 +324,38 @@ view: program_fact {
     sql: ${TABLE}."LOCATION KEY" ;;
   }
 
-  dimension: location_legal_name {
+  dimension: location_name {
     type: string
+    label: "School Name"
     sql: ${TABLE}."Location Legal Name" ;;
   }
 
-  dimension: location_organization_type_code {
+  dimension: location_org_type {
     type: string
+    label: "Location Organization Type"
+    description: "Values:
+    NULL
+    Central Office
+    Charter
+    Home School
+    Off-Site
+    Private
+    Public
+    State Supported"
     sql: ${TABLE}."Location Organization Type Code" ;;
   }
 
   dimension: location_status {
     type: string
+    label: "School Status"
+    description: "Values:
+                    ADDED
+                    CHANGED AGENCY
+                    CLOSED
+                    CLOSEDGT1Y
+                    NEW
+                    OPEN
+                    REOPENED"
     sql: ${TABLE}."Location Status" ;;
   }
 
@@ -285,13 +388,17 @@ view: program_fact {
     sql: ${TABLE}."modified indicator STUD_SNAPSHOT" ;;
   }
 
-  dimension: nces_district_id {
+  dimension: nces_district_code {
     type: string
+    label: "NCES District Code"
+    description: "Federal District code"
     sql: ${TABLE}."NCES District ID" ;;
   }
 
   dimension: nces_school_id {
     type: string
+    label: "NCES School ID"
+    description: "Federal School code"
     sql: ${TABLE}."NCES School ID" ;;
   }
 
@@ -427,8 +534,21 @@ view: program_fact {
     sql: ${TABLE}.Retained ;;
   }
 
-  dimension: school_level_code {
+  dimension: school_level {
     type: string
+    label: "School Level Code"
+    description: "Values:
+    NULL
+    AP
+    CO
+    ES
+    HS
+    JH
+    MS
+    NAPS
+    PREK
+    SED
+    SS"
     sql: ${TABLE}."School Level Code" ;;
   }
 
@@ -460,21 +580,39 @@ view: program_fact {
 
   dimension: special_ed_referral {
     type: string
+    label: "Special Ed Referral"
+    description: "Values:
+    NULL
+    Child referred thru Child Find (NOT rcving Part C)
+    Child served in Part C referred to Part B"
     sql: ${TABLE}."Special Ed Referral" ;;
   }
 
   dimension: special_ed_referral_code {
     type: string
+    label: "Special Ed Referral Code"
+    description: "Values:
+    NULL
+    C
+    F"
     sql: ${TABLE}."Special Ed Referral Code" ;;
   }
 
   dimension: special_ed_status {
     type: string
+    label: "Special Ed Status"
+    description: "Values:
+    Regular Education and Gifted only students
+    Students with disabilities"
     sql: ${TABLE}."Special Ed Status" ;;
   }
 
   dimension: special_ed_status_code {
     type: string
+    label: "Special Ed Status Code"
+    description: "Values:
+    N
+    Y"
     sql: ${TABLE}."Special Ed Status Code" ;;
   }
 
@@ -497,8 +635,10 @@ view: program_fact {
     sql: ${TABLE}."Student Birth Date" ;;
   }
 
-  dimension: student_first_name {
+  dimension: student_name_first {
     type: string
+    label: "Name - First"
+    description: "Student first name, as documented in STARS database"
     sql: ${TABLE}."Student First Name" ;;
   }
 
@@ -524,6 +664,7 @@ view: program_fact {
 
   dimension: student_id {
     type: string
+    label: "Student ID"
     # hidden: yes
     sql: ${TABLE}."Student ID" ;;
   }
@@ -540,11 +681,15 @@ view: program_fact {
 
   dimension: student_key {
     type: number
+    label: "STUDENT KEY"
+    description: "STARS database auto generated key for individual students. The key is a unique identifier."
+    hidden: yes
     sql: ${TABLE}."STUDENT KEY" ;;
   }
 
-  dimension: student_last_name {
+  dimension: student_name_last {
     type: string
+    label: "Name - Last"
     sql: ${TABLE}."Student Last Name" ;;
   }
 
@@ -558,13 +703,18 @@ view: program_fact {
     sql: ${TABLE}."Student Lives With Code" ;;
   }
 
-  dimension: student_middle_initial {
+  dimension: student_name_mi {
     type: string
+    label: "Name - MI"
+    description: "Student middle initial (MI), as documented in STARS database
+Value entered cannot be more than one character."
     sql: ${TABLE}."Student Middle Initial" ;;
   }
 
-  dimension: student_name {
+  dimension: student_name_full {
     type: string
+    label: "Name - Last, First"
+    hidden: yes
     sql: ${TABLE}."Student Name" ;;
   }
 
@@ -635,6 +785,7 @@ view: program_fact {
 
   dimension_group: student_snapshot {
     type: time
+    label: "Snapshot Date"
     timeframes: [
       raw,
       time,
@@ -657,8 +808,16 @@ view: program_fact {
     sql: ${TABLE}."Student Special Program Code" ;;
   }
 
-  dimension: title_i_location_status_code {
+  dimension: title_i_location_status {
     type: string
+    label: "Title I Location Status Code"
+    description: "Values:
+    N  =  No Services
+    No =  No
+    S  =  School-wide
+    T  =  Targeted
+    W  =  W
+    s  =  s"
     sql: ${TABLE}."Title I Location Status Code" ;;
   }
 
@@ -672,14 +831,19 @@ view: program_fact {
     drill_fields: [detail*]
   }
 
+  measure: count_student {
+    type: count
+    drill_fields: [student_id]
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
       district_legal_name,
-      location_legal_name,
-      student_first_name,
-      student_last_name,
-      student_name,
+      location_name,
+      student_name_first,
+      student_name_last,
+      student_name_full,
       student.student_id,
       student.student_name,
       student.district_name,

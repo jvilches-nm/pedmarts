@@ -28,6 +28,12 @@ explore: car_student {
 }
 
 explore: discipline {
+  join: stud_snapshot {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${discipline.student_id} = ${stud_snapshot.student_id}
+    and ${discipline.school_year_date} = ${stud_snapshot.school_year_end_date};;
+  }
 }
 
 explore: fact_tests {
@@ -38,7 +44,8 @@ explore: fc_matched {
     relationship: many_to_one
     type: left_outer
     sql_on: ${fc_matched.fc_student_id} = ${stud_snapshot.student_id}
-    and ${fc_matched.school_year_date} = ${stud_snapshot.school_year_end_date};;
+    and ${fc_matched.school_year_date} = ${stud_snapshot.school_year_end_date}
+    ;;
 
   }
 }
@@ -46,13 +53,21 @@ explore: fc_matched {
 explore: migrant {}
 
 explore: program_fact {
+  join: stud_snapshot {
+    relationship: many_to_one
+    type: left_outer
+sql_on: ${program_fact.student_id} = ${stud_snapshot.student_id} and
+        ${program_fact.school_year_date} = ${stud_snapshot.school_year_end_date} and
+        ${program_fact.student_snapshot_date} = ${stud_snapshot.snapshot_date};;
+  }
 }
 
 explore: school_enroll {
   join: stud_snapshot {
     relationship: many_to_one
     type:  left_outer
-    sql_on:  ${school_enroll.student_id} = ${stud_snapshot.student_id}  and ${school_enroll.school_year}=${stud_snapshot.school_year_end_date};;
+    sql_on:  ${school_enroll.student_id} = ${stud_snapshot.student_id}
+    and ${school_enroll.school_year}=${stud_snapshot.school_year_end_date};;
   }
 }
 
