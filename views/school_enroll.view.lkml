@@ -36,7 +36,7 @@ view: school_enroll {
   }
 
   dimension: school_year {
-    type: string
+    type: date
     label: "School Year"
     description: "The PED standard school year runs from July 1 through June 30. PED uses the June 30th date to designate the full school year. "
     sql: ${TABLE}.SCHOOL_YEAR ;;

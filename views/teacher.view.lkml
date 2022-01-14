@@ -272,7 +272,7 @@ L.   Teachers"
     sql: ${TABLE}."Primary Location Name" ;;
   }
 
-  dimension_group: school_year {
+  dimension_group: school_year_date {
     type: time
     timeframes: [
       raw,
@@ -284,6 +284,13 @@ L.   Teachers"
       year
     ]
     sql: ${TABLE}."School Year" ;;
+  }
+
+  dimension: school_year {
+    type: string
+    label: "School Year"
+    description: "The two years that the school year spans"
+    sql: cast(YEAR(${TABLE}."School Year")-1 as varchar) +'-'+ cast(YEAR(${TABLE}."School Year") as varchar) ;;
   }
 
   dimension_group: staff_birth {

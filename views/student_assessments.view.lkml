@@ -18,51 +18,87 @@ view: assessment_view {
 
   dimension: assessment_category {
     type: string
+    label: "Assessment Category"
+    description: "Values:
+    NULL
+    STATE"
     sql: ${TABLE}."Assessment Category" ;;
   }
 
   dimension: assessment_group {
     type: string
+    label: "Assessment Group"
+    description: "Values:
+    NULL
+    ELP
+    ELP Alternate
+    NMAPA
+    NMELPA
+    NMSBA
+    NULL
+    "
     sql: ${TABLE}."Assessment Group" ;;
   }
 
   dimension: assessment_id {
     type: string
+    label: "Assessment ID"
     sql: ${TABLE}."Assessment ID" ;;
   }
 
-  dimension: assessment_id_school_year {
+  dimension: assessment_school_year {
     type: string
+    label: "Assessment - School Year"
+    description: "Assessment name or ID concatenated with the school year eg.,
+    Accuplacer Test 2013-2014, NMAPA 2009-2010"
     sql: ${TABLE}."Assessment ID School Year" ;;
   }
 
-  dimension: assessment_name {
+  dimension: assessment {
     type: string
+    label: "Assessment Name"
+    description: ""
     sql: ${TABLE}."Assessment Name" ;;
   }
 
   dimension: assessment_status {
     type: string
+    label: "Assessment Status"
     sql: ${TABLE}."Assessment Status" ;;
   }
 
   dimension: assessment_status_code {
     type: string
+    label: "Assessment Status Code"
     sql: ${TABLE}."Assessment Status Code" ;;
   }
 
   dimension: assessment_type {
     type: string
+    label: "Assessment Type"
+    description: "Values:
+    NULL
+    CRT"
     sql: ${TABLE}."Assessment Type" ;;
   }
 
   dimension: assessment_vendor {
     type: string
+    description: "Values:
+Air
+Harcourt
+Measured Progress"
     sql: ${TABLE}."Assessment Vendor" ;;
   }
 
-  dimension: ayp_additional_indicator_type {
+  dimension: ayp_indicator_type {
     type: string
+    label: "AYP Additional Indicator Type"
+    description: "Values:
+NULL
+ES/MS
+HS
+N/A"
     sql: ${TABLE}."AYP Additional Indicator Type" ;;
   }
 
@@ -1291,6 +1327,13 @@ view: assessment_view {
 
   dimension: title_i_location_status {
     type: string
+    label: "Title I Location Status"
+    description: "Values:
+    NULL
+    No Services
+    s
+    School-wide
+    Targeted"
     sql: ${TABLE}."Title I Location Status" ;;
   }
 
@@ -1329,7 +1372,7 @@ view: assessment_view {
     fields: [
       subtest_name,
       scoring_model_name,
-      assessment_name,
+      assessment,
       student_first_name,
       student_last_name,
       student_name,
