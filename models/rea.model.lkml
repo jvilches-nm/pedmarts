@@ -50,7 +50,14 @@ explore: fc_matched {
   }
 }
 
-explore: migrant {}
+explore: migrant {
+  join: stud_snapshot {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${migrant.ssid} = ${stud_snapshot.student_id}
+    and ${migrant.school_year_date} = ${stud_snapshot.school_year_end_date};;
+  }
+}
 
 explore: program_fact {
   join: stud_snapshot {
@@ -72,6 +79,12 @@ explore: school_enroll {
 }
 
 explore: special_ed_snap {
+  join: stud_snapshot {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${special_ed_snap.student_id} = ${stud_snapshot.student_id}
+    and ${special_ed_snap.school_year_date} = ${stud_snapshot.school_year_end_date} ;;
+  }
 }
 
 explore: stud_snapshot {
