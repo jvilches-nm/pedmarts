@@ -278,11 +278,18 @@ OS = Out of School"
               ELSE '' END ;;
   }
 
+  dimension: RPTG_RACE_ETHNICITY_DESC {
+    type: string
+    label: "Derived Ethnicity"
+    description: "Derived Ethnicity"
+    sql: ${TABLE}.RPTG_RACE_ETHNICITY_DESC ;;
+  }
+
   dimension: race_1 {
     type: string
     label: "Race 1"
     description: "Primary chosen race of the student"
-    sql: ${TABLE}.RPTG_RACE_ETHNICITY_DESC ;;
+    sql: ${TABLE}.RACE1_CODE ;;
   }
 
   dimension: school_type_code {
