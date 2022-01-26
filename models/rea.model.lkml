@@ -10,6 +10,9 @@ datagroup: rea_default_datagroup {
 
 persist_with: rea_default_datagroup
 
+explore: hsco_tbl {
+
+}
 
 explore: assessment_view {
 }

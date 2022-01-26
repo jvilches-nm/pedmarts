@@ -95,7 +95,7 @@ OS = Out of School"
 4 = RFEP 3 (Reclassified Fluent English Proficient -exited Year 3)
 5 = RFEP 4 (Reclassified Fluent English Proficient -exited Year 4)
 6 = RFEP 5+ (Reclassified Fluent English Proficient -exited Year 5+)"
-    hidden: yes
+    #hidden: yes
     sql: ${TABLE}.ENG_PROF_CODE ;;
   }
 
