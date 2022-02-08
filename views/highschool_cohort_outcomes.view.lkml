@@ -30,6 +30,7 @@ view: hsco_tbl {
   dimension: school_year_end_date{
     type: string
     label: "School Year End Date"
+    hidden: yes
     sql: ${TABLE}.SchoolYear ;;
   }
 
