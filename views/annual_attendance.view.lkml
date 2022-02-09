@@ -10,7 +10,7 @@ view: annual_attendance {
     type: sum
     label: "Chronic Absentee Rate"
     description: "Percent of student enrolled for at least 10 days and who have missed 10% or more school days since the beginning of School Year"
-    sql: ${TABLE}.CAR ;;
+    sql: ${TABLE}.CurrentYearCAS ;;
   }
 
   dimension: current_year_cas {
@@ -29,11 +29,6 @@ view: annual_attendance {
     sql: CAST(${TABLE}.DistrictCode AS NUMERIC) ;;
   }
 
-  measure: enroll_number {
-    type: sum
-    label: "Enrollment"
-    sql: ${TABLE}.EnrollNumber ;;
-  }
 
   dimension: location_type {
     type: string
@@ -92,11 +87,11 @@ view: annual_attendance {
     sql: ${TABLE}.Tier1AbsenceRate ;;
   }
 
-  #measure: tier1_absence_rate {
-  #  type: sum
-  #  label: "Tier 1 Absence Rate"
-  #  sql: ${TABLE}.Tier1AbsenceRate ;;
-  #}
+  measure: enroll_number {
+    type: sum
+    label: "Enrollment"
+    sql: ${TABLE}.EnrollNumber ;;
+  }
 
   measure: tier1_absent_student {
     type: sum
