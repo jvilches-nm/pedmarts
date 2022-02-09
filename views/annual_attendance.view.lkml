@@ -91,7 +91,7 @@ view: annual_attendance {
                when ${sub_pop_item_code} = 'SD' then 11
                when ${sub_pop_item_code} = 'EL' then 12
 
-               else '' end
+               else 0 end
               ;;
   }
 
