@@ -58,6 +58,7 @@ view: annual_attendance {
   dimension: sub_pop_item {
     type: string
     label: "Subpopulation Item"
+    order_by_field: sub_pop_item_sort
     sql:  case when ${sub_pop_item_code} = 'F' then 'Female'
                when ${sub_pop_item_code} = 'M' then 'Male'
                when ${sub_pop_item_code} = 'ED' then 'Economically Disadvantaged'
@@ -74,16 +75,61 @@ view: annual_attendance {
               ;;
   }
 
+  dimension: sub_pop_item_sort {
+    type: number
+    label: "Subpopulation Item Sort"
+    sql:  case when ${sub_pop_item_code} = 'F' then 1
+               when ${sub_pop_item_code} = 'M' then 2
+               when ${sub_pop_item_code} = 'H' then 3
+               when ${sub_pop_item_code} = 'I' then 4
+               when ${sub_pop_item_code} = 'A' then 5
+               when ${sub_pop_item_code} = 'B' then 6
+               when ${sub_pop_item_code} = 'C' then 7
+               when ${sub_pop_item_code} = 'P' then 8
+               when ${sub_pop_item_code} = 'NH' then 9
+               when ${sub_pop_item_code} = 'ED' then 10
+               when ${sub_pop_item_code} = 'SD' then 11
+               when ${sub_pop_item_code} = 'EL' then 12
+
+               else '' end
+              ;;
+  }
+
   dimension: district_name {
     type: string
     label: " District Name"
     sql: ${TABLE}.DistrictName ;;
   }
 
+  dimension: district_name_filter{
+    label: "District Name - Filter"
+    type: string
+    sql: ${TABLE}.DistrictName ;;
+    html: {% if annual_attendance.district_name._is_filtered %}
+          <a>{{rendered_value}} </a>
+          {% else %}
+          <a> All Districts </a>
+          {% endif %};;
+  }
+
+
   dimension: school_name {
     type: string
     label: " School Name"
     sql: ${TABLE}.SchoolName ;;
+  }
+
+  dimension: school_name_filter{
+    label: "School Name - Filter"
+    type: string
+    sql: ${TABLE}.SchoolName ;;
+    html: {% if annual_attendance.school_name._is_filtered %}
+          <a>{{rendered_value}} </a>
+          {% elsif annual_attendance.district_name._is_filtered %}
+          <a>All Schools in District</a>
+          {% else %}
+          <a>All Schools in State</a>
+          {% endif %};;
   }
 
   dimension: percent_tier_1 {
