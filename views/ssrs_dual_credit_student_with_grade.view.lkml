@@ -1,4 +1,4 @@
-view: dual_credit_student_with_grade {
+view: ssrs_dual_credit_student_with_grade {
   sql_table_name: dbo.ssrs_DualCreditDistSchoolStudCourseGrade_RPT ;;
 
   dimension_group: birth {

@@ -1,4 +1,4 @@
-view: assessment_view {
+view: student_assessments {
   sql_table_name: dbo.Assessment View ;;
 
   dimension: achievement_level_code {

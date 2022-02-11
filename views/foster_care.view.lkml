@@ -1,4 +1,4 @@
-view: fc_matched {
+view: foster_care {
   sql_table_name: dbo.[FC MATCHED] ;;
 
   dimension_group: date_created {

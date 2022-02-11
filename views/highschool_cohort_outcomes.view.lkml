@@ -1,4 +1,4 @@
-view: hsco_tbl {
+view: highschool_cohort_outcomes {
   sql_table_name: dbo.HSCO_tbl ;;
 
   dimension: assuarence {

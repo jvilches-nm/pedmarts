@@ -1,4 +1,4 @@
-view: ssrs_list_assement_tests_rpt {
+view: ssrs_list_assessment_fact {
   sql_table_name: dbo.ssrs_List_Assement_Tests_RPT ;;
 
   dimension: alpha_score {

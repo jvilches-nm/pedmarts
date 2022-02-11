@@ -1,4 +1,4 @@
-view: car_student {
+view: ssrs_perkins_student_listing {
   sql_table_name: dbo.ssrs_CAR_Student_RPT ;;
 
   dimension: car_indicator_1_s1_denominator {

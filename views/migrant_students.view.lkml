@@ -1,4 +1,4 @@
-view: migrant {
+view: migrant_students {
   sql_table_name: dbo.MIGRANT ;;
   drill_fields: [id]
 

@@ -1,4 +1,4 @@
-view: stud_snapshot {
+view: student_snapshot {
   sql_table_name: dbo.STUD_SNAPSHOT ;;
   label: "Student Snapshot"
 
@@ -74,6 +74,7 @@ OS = Out of School"
     type: string
     label: "Student Date of Birth - Formatted"
     description: "Student Date of Birth - Formatted in yyyymmdd format"
+    hidden: yes
     sql: ${TABLE}.DOB1 ;;
   }
 
