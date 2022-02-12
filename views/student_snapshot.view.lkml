@@ -231,6 +231,18 @@ OS = Out of School"
     sql: ${TABLE}.POVERTY_CODE ;;
   }
 
+  dimension: race_1 {
+    type: string
+    label: "Race 1"
+    description: "Primary chosen race of the student"
+    sql: sql: CASE WHEN ${TABLE}.RACE1_CODE='C' then 'Caucasian'
+                   WHEN ${TABLE}.RACE1_CODE='B' then 'Black or African American'
+                   WHEN ${TABLE}.RACE1_CODE='A' then 'Asian'
+                   WHEN ${TABLE}.RACE1_CODE='I' then 'American Indian/Alaskan Native'
+                   WHEN ${TABLE}.RACE1_CODE='P' then 'Native Hawaiian or Other Pacific Islander'
+                   ELSE '' ;;
+  }
+
   dimension: race_2 {
     type: string
     label: "Race 2"
@@ -284,13 +296,6 @@ OS = Out of School"
     label: "Derived Ethnicity"
     description: "Derived Ethnicity"
     sql: ${TABLE}.RPTG_RACE_ETHNICITY_DESC ;;
-  }
-
-  dimension: race_1 {
-    type: string
-    label: "Race 1"
-    description: "Primary chosen race of the student"
-    sql: ${TABLE}.RACE1_CODE ;;
   }
 
   dimension: school_type_code {
@@ -365,13 +370,21 @@ OS = Out of School"
       quarter,
       year
     ]
+    hidden: yes
     sql: ${TABLE}.STUD_BIRTHDATE ;;
   }
+
+  dimension: student_age {
+    type: number
+    sql: CONVERT(INT,DATEDIFF(day,${TABLE}.STUD_BIRTHDATE,GETDATE()))/365  ;;
+  }
+
 
   dimension: student_name_middle {
     type: string
     label: "Name - Middle"
     description: "Student Middle Name "
+    hidden: yes
     sql: ${TABLE}.STUD_MIDDLE_NM ;;
   }
 
@@ -379,6 +392,7 @@ OS = Out of School"
     type: string
     label: "Name - First"
     description: "Student first name, as documented in STARS database"
+    hidden: yes
     sql: ${TABLE}.STUDENT_FIRST_NM ;;
   }
 
@@ -410,6 +424,7 @@ OS = Out of School"
     type: string
     label: "Name - Last"
     description: "Student last name, as documented in STARS database"
+    hidden: yes
     sql: ${TABLE}.STUDENT_LAST_NM ;;
   }
 
@@ -417,12 +432,14 @@ OS = Out of School"
     type: string
     label: "Name - MI"
     description: "Student middle initial (MI), as documented in STARS database. Value entered cannot be more than one character."
+    hidden: yes
     sql: ${TABLE}.STUDENT_MID_INIT ;;
   }
 
   dimension: student_name_full {
     type: string
     label: "Name - Last, First"
+    hidden: yes
     sql: ${TABLE}.STUDENT_NAME ;;
   }
 

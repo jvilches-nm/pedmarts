@@ -56,6 +56,7 @@ view: foster_care {
     type: string
     label: "Name - First"
     description: "Student first name, as documented in the Foster Child Matched source data"
+    hidden: yes
     sql: ${TABLE}.FirstName ;;
   }
 
@@ -86,6 +87,7 @@ view: foster_care {
     type: string
     label: "Name - Last"
     description: "Student last name, as documented in the Foster Child Matched source data"
+    hidden: yes
     sql: ${TABLE}.LastName ;;
   }
 
@@ -112,6 +114,7 @@ view: foster_care {
     type: string
     label: "Name - MI"
     description: "Student middle initial, as documented in the Foster Child Matched source data"
+    hidden: yes
     sql: ${TABLE}.MI ;;
   }
 
@@ -172,6 +175,7 @@ view: foster_care {
     type: string
     label: "Name - Last STARS"
     description: "Student last name, as documented in STARS database"
+    hidden: yes
     sql: ${TABLE}.Stars_LastName ;;
   }
 
@@ -179,6 +183,7 @@ view: foster_care {
     type: string
     label: "Name - MI STARS"
     description: "Student middle initial, as documented in STARS database"
+    hidden: yes
     sql: ${TABLE}.Stars_MI ;;
   }
 
@@ -186,7 +191,7 @@ view: foster_care {
     type: string
     label: "Student ID"
     description: "State issued student identification number (confirm = STARS ID)"
-    # hidden: yes
+     hidden: yes
     sql: ${TABLE}."Student ID" ;;
   }
 

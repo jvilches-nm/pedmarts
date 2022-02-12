@@ -105,7 +105,13 @@ view: migrant_students {
 
   dimension: birth_date {
     type: string
+    hidden: yes
     sql: ${TABLE}."Birth Date" ;;
+  }
+
+  dimension: student_age {
+    type: number
+    sql: CONVERT(INT,DATEDIFF(day,${TABLE}."Birth Date",GETDATE()))/365  ;;
   }
 
   dimension: birth_state {

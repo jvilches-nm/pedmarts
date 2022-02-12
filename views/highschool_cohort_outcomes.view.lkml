@@ -43,6 +43,7 @@ view: highschool_cohort_outcomes {
 
   dimension: student_id {
     type: string
+    hidden: yes
     sql: ${TABLE}.StudentID ;;
   }
 

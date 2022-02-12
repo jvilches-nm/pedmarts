@@ -7,6 +7,7 @@ view: student {
     label: "Student ID"
     description: "State issued student identification number. "
     type: string
+    hidden: yes
     sql: ${TABLE}.STUDENT_ID ;;
   }
 
@@ -59,6 +60,7 @@ OS = Out of School"
     type: string
     label: "date_of_birth"
     description: "Student Date of Birth"
+    hidden: yes
     sql: ${TABLE}.DOB ;;
   }
 
@@ -277,16 +279,24 @@ N
       quarter,
       year
     ]
+    hidden: yes
     sql: ${TABLE}.STUD_BIRTHDATE ;;
+  }
+
+  dimension: student_age {
+    type: number
+    sql: CONVERT(INT,DATEDIFF(day,${TABLE}.STUD_BIRTHDATE,GETDATE()))/365  ;;
   }
 
   dimension: stud_middle_nm {
     type: string
+    hidden: yes
     sql: ${TABLE}.STUD_MIDDLE_NM ;;
   }
 
   dimension: student_first_nm {
     type: string
+    hidden: yes
     sql: ${TABLE}.STUDENT_FIRST_NM ;;
   }
 
@@ -297,21 +307,25 @@ N
 
   dimension: student_key {
     type: number
+    hidden: yes
     sql: ${TABLE}.STUDENT_KEY ;;
   }
 
   dimension: student_last_nm {
     type: string
+    hidden: yes
     sql: ${TABLE}.STUDENT_LAST_NM ;;
   }
 
   dimension: student_mid_init {
     type: string
+    hidden: yes
     sql: ${TABLE}.STUDENT_MID_INIT ;;
   }
 
   dimension: student_name {
     type: string
+    hidden: yes
     sql: ${TABLE}.STUDENT_NAME ;;
   }
 

@@ -1,5 +1,5 @@
 view: teacher {
-  sql_table_name: dbo.TEACHER ;;
+  sql_table_name: dbo.Teacher ;;
 
   dimension: assignment {
     type: string
@@ -304,11 +304,19 @@ L.   Teachers"
       quarter,
       year
     ]
+  #  hidden: yes
     sql: ${TABLE}."Staff Birth Date" ;;
+  }
+
+  dimension: staff_age {
+    type: number
+    #label: "Age"
+    sql: CONVERT(INT,DATEDIFF(day,${TABLE}."Staff Birth Date",GETDATE()))/365  ;;
   }
 
   dimension: staff_e_mail_address {
     type: string
+    hidden: yes
     sql: ${TABLE}."Staff eMail Address" ;;
   }
 
@@ -338,6 +346,7 @@ L.   Teachers"
 
   dimension: staff_first_name {
     type: string
+    hidden: yes
     sql: ${TABLE}."Staff First Name" ;;
   }
 
@@ -358,16 +367,19 @@ L.   Teachers"
 
   dimension: staff_id {
     type: string
+    hidden: yes
     sql: ${TABLE}."Staff ID" ;;
   }
 
   dimension: staff_last_name {
     type: string
+    hidden: yes
     sql: ${TABLE}."Staff Last Name" ;;
   }
 
   dimension: staff_name {
     type: string
+    hidden: yes
     sql: ${TABLE}."Staff Name" ;;
   }
 

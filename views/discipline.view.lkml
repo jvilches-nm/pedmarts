@@ -103,7 +103,7 @@ view: discipline {
 
   dimension: student_id {
     type: string
-    # hidden: yes
+    hidden: yes
     sql: ${TABLE}."Student ID" ;;
   }
 
