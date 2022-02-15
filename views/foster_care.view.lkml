@@ -1,5 +1,5 @@
 view: foster_care {
-  sql_table_name: dbo.[FC MATCHED] ;;
+  sql_table_name: dbo.[FC_MATCHED] ;;
 
   dimension_group: date_created {
     type: time
@@ -20,6 +20,7 @@ view: foster_care {
     type: time
     label: "Date of Birth"
     description: "Date of Birth, as documented in the Foster Child Matched source data"
+    hidden: yes
     timeframes: [
       raw,
       time,
@@ -32,10 +33,17 @@ view: foster_care {
     sql: ${TABLE}.DateofBirth ;;
   }
 
+
+  dimension: student_age {
+    type: number
+    sql: CONVERT(INT,DATEDIFF(day,${TABLE}.DateofBirth,GETDATE()))/365  ;;
+  }
+
   dimension: fc_district_code {
     type: string
     label: "District Code"
     description: "PED defined three character district code."
+    hidden: yes
     sql: ${TABLE}."District Code" ;;
   }
 
@@ -43,6 +51,7 @@ view: foster_care {
     type: string
     label: "District Name - Short"
     description: "The district short name. Examples: Alamogordo (vs Alamogordo Public Schools), Albuquerque (vs Albuquesrque Public Schools), "
+    hidden: yes
     sql: ${TABLE}.DistrictName ;;
   }
 
@@ -95,6 +104,7 @@ view: foster_care {
     type: string
     label: "School Code"
     description: "PED defined three character location codes. "
+    hidden: yes
     sql: ${TABLE}."Location ID" ;;
   }
 
@@ -102,6 +112,7 @@ view: foster_care {
     type: string
     label: "School Name"
     description: "School name."
+    hidden: yes
     sql: ${TABLE}.LocationName ;;
   }
 
@@ -145,6 +156,7 @@ view: foster_care {
     type: string
     label: "School Year"
     description: "Using STARS school year notation, e.g. 2022-06-30"
+    hidden: yes
     sql: ${TABLE}.SchoolYear ;;
   }
 
@@ -152,6 +164,7 @@ view: foster_care {
     type: time
     label: "Date of Birth STARS"
     description: "Date of Birth, as documented in STARS database"
+    hidden: yes
     timeframes: [
       raw,
       time,
@@ -168,6 +181,7 @@ view: foster_care {
     type: string
     label: "Name - First STARS"
     description: "Student first name, as documented in STARS database"
+    hidden: yes
     sql: ${TABLE}.Stars_FirstName ;;
   }
 
@@ -191,7 +205,7 @@ view: foster_care {
     type: string
     label: "Student ID"
     description: "State issued student identification number (confirm = STARS ID)"
-     hidden: yes
+   hidden: yes
     sql: ${TABLE}."Student ID" ;;
   }
 

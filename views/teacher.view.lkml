@@ -13,33 +13,28 @@ view: teacher {
     label: "Assignment Category"
     description: " Grouping of Staff Assignment Codes
     A. Administrators
-10, 11, 12, 13, 36
+       10, 11, 12, 13, 36
+    B. Educational Assistant
+       31, 31I, 32, 32I,33, 33I, 34, 34S, 34I, 34IS
+    C. Healthcare
+       01, 03, 07, 70
+    D. Media Specialist
+       76, 77, 78
+    E. Non-Certified Personnel
+      All Other Non-Certified Support Staff – Maintenance, Transportation, Food Service, IT, Facilities, Non-Certified Supervisors or Directors,Non-Certified Administrative Support Staff, Non-Certified School Support Staff
+    F. Other Personnel
 
-B. Educational Assistant
-31, 31I, 32, 32I,33, 33I, 34, 34S, 34I, 34IS
+    G. Principals
 
-C. Healthcare
-01, 03, 07, 70
+    H. Related Service Personnel For Special Education (6-21 Year Olds)
 
-D. Media Specialist
-76, 77, 78
+    I. Related Service Personnel For Special Education (3-5 Year Olds)
 
-E. Non-Certified Personnel
-All Other Non-Certified Support Staff – Maintenance, Transportation, Food Service, IT, Facilities, Non-Certified Supervisors or Directors,Non-Certified Administrative Support Staff, Non-Certified School Support Staff
+    J. School Counselor
 
-F. Other Personnel
+    K. Supervisors, Directors or Managers
 
-G. Principals
-
-H. Related Service Personnel For Special Education (6-21 Year Olds)
-
-I. Related Service Personnel For Special Education (3-5 Year Olds)
-
-J. School Counselor
-
-K. Supervisors, Directors or Managers
-
-L.   Teachers"
+    L.Teachers"
     sql: ${TABLE}."Assignment Category" ;;
 
   }
@@ -274,6 +269,7 @@ L.   Teachers"
 
   dimension_group: school_year_date {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       time,
@@ -304,13 +300,13 @@ L.   Teachers"
       quarter,
       year
     ]
-  #  hidden: yes
+     hidden: yes
     sql: ${TABLE}."Staff Birth Date" ;;
   }
 
   dimension: staff_age {
     type: number
-    #label: "Age"
+    label: "Age"
     sql: CONVERT(INT,DATEDIFF(day,${TABLE}."Staff Birth Date",GETDATE()))/365  ;;
   }
 

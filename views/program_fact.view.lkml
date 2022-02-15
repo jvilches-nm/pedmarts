@@ -1,5 +1,5 @@
 view: program_fact {
-  sql_table_name: dbo.[PROGRAM FACT] ;;
+  sql_table_name: dbo.[PROGRAM_FACT] ;;
 
   dimension: alternate_student_id {
     type: string
@@ -25,6 +25,7 @@ view: program_fact {
     NULL
     Y
     N"
+    hidden: yes
     sql: ${TABLE}."Credential Type Code" ;;
   }
 
@@ -61,6 +62,7 @@ view: program_fact {
     type: string
     label: "District Code"
     description: "PED defined three character district code."
+    hidden: yes
     sql: ${TABLE}."District Code" ;;
   }
 
@@ -76,6 +78,7 @@ view: program_fact {
     type: string
     label: "District Name - Short"
     description: "The district short name. Examples: Alamogordo (vs Alamogordo Public Schools), Albuquerque (vs Albuquesrque Public Schools), "
+    hidden: yes
     sql: ${TABLE}."District Legal Name" ;;
   }
 
@@ -107,6 +110,7 @@ view: program_fact {
     Other/Unknown
     Shelters
     Unsheltered"
+    hidden: yes
     sql: ${TABLE}."Dwelling Arrangement" ;;
   }
 
@@ -121,18 +125,21 @@ view: program_fact {
     O
     S
     U"
+    hidden: yes
     sql: ${TABLE}."Dwelling Arrangement Code" ;;
   }
 
   dimension: economically_disadvantaged_status {
     type: string
     label: "Economically Disadvantaged Status"
+    hidden: yes
     sql: ${TABLE}."Economically Disadvantaged Status" ;;
   }
 
   dimension: economically_disadvantaged_status_code {
     type: string
     label: "Economically Disadvantaged Status Code"
+    hidden: yes
     sql: ${TABLE}."Economically Disadvantaged Status Code" ;;
   }
 
@@ -146,46 +153,54 @@ view: program_fact {
     Not an English Language Learner
     Not an English Learner
     Y"
+    hidden: yes
     sql: ${TABLE}."ELL Program Eligibility" ;;
   }
 
   dimension: ell_eligibility_code {
     type: string
     label: "ELL Program Eligibility Code"
+    hidden: yes
     sql: ${TABLE}."ELL Program Eligibility Code" ;;
   }
 
   dimension: ell_participation {
     type: string
     label: "ELL Program Participation"
+    hidden: yes
     sql: ${TABLE}."ELL Program Participation" ;;
   }
 
   dimension: ell_participation_code {
     type: string
     label: "ELL Program Participation Code"
+    hidden: yes
     sql: ${TABLE}."ELL Program Participation Code" ;;
   }
 
   dimension: english_proficiency {
     type: string
     label: "English Proficiency"
+    hidden: yes
     sql: ${TABLE}."English Proficiency" ;;
   }
 
   dimension: english_proficiency_code {
     type: string
     label: "English Proficiency Code"
+    hidden: yes
     sql: ${TABLE}."English Proficiency Code" ;;
   }
 
   dimension: food_program_eligibility {
     type: string
+    hidden: yes
     sql: ${TABLE}."Food Program Eligibility" ;;
   }
 
   dimension: food_program_eligibility_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Food Program Eligibility Code" ;;
   }
 
@@ -251,11 +266,13 @@ view: program_fact {
 
   dimension: graduation_status {
     type: string
+    hidden: yes
     sql: ${TABLE}."Graduation Status" ;;
   }
 
   dimension: graduation_year {
     type: string
+    hidden: yes
     sql: ${TABLE}."Graduation Year" ;;
   }
 
@@ -266,21 +283,25 @@ view: program_fact {
 
   dimension: home_language {
     type: string
+    hidden: yes
     sql: ${TABLE}."Home Language" ;;
   }
 
   dimension: home_language_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Home Language Code" ;;
   }
 
   dimension: homeless_status {
     type: string
+    hidden: yes
     sql: ${TABLE}."Homeless Status" ;;
   }
 
   dimension: homeless_status_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Homeless Status Code" ;;
   }
 
@@ -307,6 +328,7 @@ view: program_fact {
 
   dimension: location_ayp_status_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Location AYP Status Code" ;;
   }
 
@@ -314,6 +336,7 @@ view: program_fact {
     type: string
     label: "School Code"
     description: "PED defined three character location codes. "
+    hidden: yes
     sql: ${TABLE}."Location ID" ;;
   }
 
@@ -321,12 +344,14 @@ view: program_fact {
     type: number
     label: "Location Key Stars"
     description: "STARS database auto generated key for individual schools. The key is a unique identifier."
+    hidden: yes
     sql: ${TABLE}."LOCATION KEY" ;;
   }
 
   dimension: location_name {
     type: string
     label: "School Name"
+    hidden: yes
     sql: ${TABLE}."Location Legal Name" ;;
   }
 
@@ -366,6 +391,7 @@ view: program_fact {
 
   dimension: migrant_status_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Migrant Status Code" ;;
   }
 
@@ -428,11 +454,13 @@ view: program_fact {
 
   dimension: primary_disability {
     type: string
+    hidden: yes
     sql: ${TABLE}."Primary Disability" ;;
   }
 
   dimension: primary_disability_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Primary Disability Code" ;;
   }
 
@@ -463,21 +491,25 @@ view: program_fact {
 
   dimension: program_intensity {
     type: string
+    hidden: yes
     sql: ${TABLE}."Program Intensity" ;;
   }
 
   dimension: program_participation_information {
     type: string
+    hidden: yes
     sql: ${TABLE}."Program Participation Information" ;;
   }
 
   dimension: program_participation_information_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Program Participation Information Code" ;;
   }
 
   dimension: program_qualification_comment {
     type: string
+    hidden: yes
     sql: ${TABLE}."Program Qualification Comment" ;;
   }
 
@@ -531,6 +563,7 @@ view: program_fact {
 
   dimension: retained {
     type: string
+    description: "Still Enrolled"
     sql: ${TABLE}.Retained ;;
   }
 
@@ -556,6 +589,7 @@ view: program_fact {
     type: time
     label: "School Year"
     description: "The school year is documented with the last day in the school year. "
+    hidden: yes
     timeframes: [
       raw,
       time,
@@ -585,6 +619,7 @@ view: program_fact {
     NULL
     Child referred thru Child Find (NOT rcving Part C)
     Child served in Part C referred to Part B"
+    hidden: yes
     sql: ${TABLE}."Special Ed Referral" ;;
   }
 
@@ -623,6 +658,7 @@ view: program_fact {
 
   dimension_group: student_birth {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       time,
@@ -635,10 +671,16 @@ view: program_fact {
     sql: ${TABLE}."Student Birth Date" ;;
   }
 
+  dimension: student_age {
+    type: number
+    sql: CONVERT(INT,DATEDIFF(day,${TABLE}."Student Birth Date",GETDATE()))/365  ;;
+  }
+
   dimension: student_name_first {
     type: string
     label: "Name - First"
     description: "Student first name, as documented in STARS database"
+    hidden: yes
     sql: ${TABLE}."Student First Name" ;;
   }
 
@@ -665,7 +707,7 @@ view: program_fact {
   dimension: student_id {
     type: string
     label: "Student ID"
-    # hidden: yes
+    hidden: yes
     sql: ${TABLE}."Student ID" ;;
   }
 
@@ -690,6 +732,7 @@ view: program_fact {
   dimension: student_name_last {
     type: string
     label: "Name - Last"
+    hidden: yes
     sql: ${TABLE}."Student Last Name" ;;
   }
 
@@ -708,6 +751,7 @@ view: program_fact {
     label: "Name - MI"
     description: "Student middle initial (MI), as documented in STARS database
 Value entered cannot be more than one character."
+    hidden: yes
     sql: ${TABLE}."Student Middle Initial" ;;
   }
 
@@ -720,21 +764,25 @@ Value entered cannot be more than one character."
 
   dimension: student_race_1_ethnicity {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race 1 Ethnicity" ;;
   }
 
   dimension: student_race_1_ethnicity_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race 1 Ethnicity Code" ;;
   }
 
   dimension: student_race_2 {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race 2" ;;
   }
 
   dimension: student_race_2_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race 2 Code" ;;
   }
 
@@ -745,41 +793,49 @@ Value entered cannot be more than one character."
 
   dimension: student_race_3_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race 3 Code" ;;
   }
 
   dimension: student_race_4 {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race 4" ;;
   }
 
   dimension: student_race_4_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race 4 Code" ;;
   }
 
   dimension: student_race_5 {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race 5" ;;
   }
 
   dimension: student_race_5_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race 5 Code" ;;
   }
 
   dimension: student_race_ethnicity_derived {
     type: string
+    #hidden: yes
     sql: ${TABLE}."Student Race Ethnicity Derived" ;;
   }
 
   dimension: student_race_ethnicity_subgroup {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race Ethnicity Subgroup" ;;
   }
 
   dimension: student_race_ethnicity_subgroup_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race Ethnicity Subgroup Code" ;;
   }
 
@@ -805,6 +861,7 @@ Value entered cannot be more than one character."
 
   dimension: student_special_program_code {
     type: string
+    #hidden: yes
     sql: ${TABLE}."Student Special Program Code" ;;
   }
 

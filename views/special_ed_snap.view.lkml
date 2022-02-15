@@ -3,21 +3,26 @@ view: special_ed_snap {
 
   dimension: alt_assessment {
     type: string
+    label: "Alternate Assessment"
+    description: "Indication of whether the Special Education Student is entitled to take an alternate assessment rather than the regular state assessment, as documented in their Service Plan (IEP)."
     sql: ${TABLE}."Alt Assessment" ;;
   }
 
   dimension: braille_instruction {
     type: string
+    description: "Indication of need for Braille Instruction"
     sql: ${TABLE}."Braille Instruction" ;;
   }
 
   dimension: challenge_type {
     type: string
+    hidden: yes
     sql: ${TABLE}."Challenge Type" ;;
   }
 
   dimension: challenge_type_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Challenge Type Code" ;;
   }
 
@@ -33,21 +38,25 @@ view: special_ed_snap {
 
   dimension: district_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."District Code" ;;
   }
 
   dimension: district_key {
     type: number
+    hidden: yes
     sql: ${TABLE}."DISTRICT KEY" ;;
   }
 
   dimension: district_legal_name {
     type: string
+    hidden: yes
     sql: ${TABLE}."District Legal Name" ;;
   }
 
   dimension: district_name {
     type: string
+    hidden: yes
     sql: ${TABLE}."District Name" ;;
   }
 
@@ -73,11 +82,13 @@ view: special_ed_snap {
 
   dimension: ell_program_participation_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."ELL Program Participation Code" ;;
   }
 
   dimension: english_proficiency_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."English Proficiency Code" ;;
   }
 
@@ -102,11 +113,17 @@ view: special_ed_snap {
 
   dimension: expected_diploma_type {
     type: string
+    label: "Expected Diploma Type"
+    description: "Expected Graduation Option. The option determined and indicated in the student's IEP.
+    3 = Modified Option
+    4 = Ability Option
+    5 = Standard Option"
     sql: ${TABLE}."Expected Diploma Type" ;;
   }
 
   dimension: expected_diploma_type_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Expected Diploma Type Code" ;;
   }
 
@@ -182,6 +199,8 @@ view: special_ed_snap {
 
   dimension_group: last_evaluation {
     type: time
+    label: "Last Evaluation Date"
+    description: "Date on which the student last received a formal special education evaluation."
     timeframes: [
       raw,
       time,
@@ -196,6 +215,8 @@ view: special_ed_snap {
 
   dimension_group: last_iep {
     type: time
+    label: "Last IEP Date"
+    description: "Date on which the student last received an Individual Education Plan (IEP)."
     timeframes: [
       raw,
       time,
@@ -304,6 +325,10 @@ view: special_ed_snap {
 
   dimension: primary_area_of_exceptionality {
     type: string
+    label: "Primary Area of Exceptionality"
+    description: "Values:
+    G = Gifted Only or Gifted as primary and disability as secondary as indicated in the IEP.
+    SE = Disability Only or Disability as primary and Gifted as secondary as indicated in the IEP."
     sql: ${TABLE}."Primary Area of Exceptionality" ;;
   }
 
@@ -378,11 +403,27 @@ view: special_ed_snap {
 
   dimension: secondary_disability {
     type: string
+    label: "Secondary Disability"
+    description: "Values:
+    Autism
+    Deaf-Blindness
+    Developmental Delay
+    Emotional Disturbance
+    Hearing Impairment
+    Intellectual Disability (previously referred to as MR – Mental Retardation)
+    Multiple Disabilities
+    Other Health Impairment
+    Orthopedic Impairment
+    Speech or Language Impairment
+    Specific Learning Disability
+    Traumatic Brain Injury
+    Visual Impairment"
     sql: ${TABLE}."Secondary Disability" ;;
   }
 
   dimension: secondary_disability_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Secondary Disability Code" ;;
   }
 
@@ -437,6 +478,7 @@ view: special_ed_snap {
 
   dimension: student_address_base_zip_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Address Base Zip Code" ;;
   }
 
@@ -452,21 +494,25 @@ view: special_ed_snap {
 
   dimension: student_address_street_1 {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Address Street 1" ;;
   }
 
   dimension: student_address_street_2 {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Address Street 2" ;;
   }
 
   dimension: student_address_zip_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Address Zip Code" ;;
   }
 
   dimension_group: student_birth {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       time,
@@ -477,6 +523,11 @@ view: special_ed_snap {
       year
     ]
     sql: ${TABLE}."Student Birth Date" ;;
+  }
+
+  dimension: student_age {
+    type: number
+    sql: CONVERT(INT,DATEDIFF(day,${TABLE}."Student Birth Date",GETDATE()))/365  ;;
   }
 
   dimension: student_first_name {
@@ -501,17 +552,19 @@ view: special_ed_snap {
 
   dimension: student_id {
     type: string
-    # hidden: yes
+    hidden: yes
     sql: ${TABLE}."Student ID" ;;
   }
 
   dimension: student_key {
     type: number
+    hidden: yes
     sql: ${TABLE}."STUDENT KEY" ;;
   }
 
   dimension: student_last_name {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Last Name" ;;
   }
 
@@ -522,51 +575,61 @@ view: special_ed_snap {
 
   dimension: student_middle_initial {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Middle Initial" ;;
   }
 
   dimension: student_name {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Name" ;;
   }
 
   dimension: student_race_1_ethnicity_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race 1 Ethnicity Code" ;;
   }
 
   dimension: student_race_2_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race 2 Code" ;;
   }
 
   dimension: student_race_3_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race 3 Code" ;;
   }
 
   dimension: student_race_4_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race 4 Code" ;;
   }
 
   dimension: student_race_5_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race 5 Code" ;;
   }
 
   dimension: student_race_ethnicity_derived {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race Ethnicity Derived" ;;
   }
 
   dimension: student_race_ethnicity_subgroup {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race Ethnicity Subgroup" ;;
   }
 
   dimension: student_race_ethnicity_subgroup_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Race Ethnicity Subgroup Code" ;;
   }
 

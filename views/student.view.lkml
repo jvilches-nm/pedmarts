@@ -100,13 +100,12 @@ R"
     type: string
     label: "Ethnicity"
     description: "Ethnicity of student.
-Valid Values:
-  Caucasian
-  Black  or African American
-  Asian
-  American Indian/Alaskan Native
-  Native Hawaiian or Other Pacific Islander
-"
+                  Valid Values:
+                  Caucasian
+                  Black or African American
+                  Asian
+                  American Indian/Alaskan Native
+                  Native Hawaiian or Other Pacific Islander"
     sql: ${TABLE}.ETHNIC_DESC ;;
   }
 
@@ -114,7 +113,7 @@ Valid Values:
     type: string
     label: "Gifted Participation"
     description: "Y = Student is identified as a Gifted
-N = Student is not identified as a Gifted."
+                  N = Student is not identified as a Gifted."
     sql: ${TABLE}.GIFTED_TALENTED ;;
   }
 
@@ -122,7 +121,7 @@ N = Student is not identified as a Gifted."
     type: string
     label: "Hispanic"
     description: "Valid Values:
-Y, N"
+                  Y, N"
     sql: ${TABLE}.HISPANIC_IND ;;
   }
 
@@ -130,8 +129,8 @@ Y, N"
     type: string
     label: "Homeless"
     description: "Valid Values:
-Y - Student is homeless.
-N - Student is not homeless."
+                  Y - Student is homeless.
+                  N - Student is not homeless."
     sql: ${TABLE}.HOMELESS ;;
   }
 
@@ -139,20 +138,18 @@ N - Student is not homeless."
     type: string
     label: "Immigrant"
     description: "Valid values:
-Yes = Immigrant
-No = Non-Immigrant
-"
+                  Yes = Immigrant
+                  No = Non-Immigrant"
     sql: ${TABLE}.IMMIGRANT_IND ;;
   }
 
   dimension: lep_eligible {
     type: string
     label: "LEP Eligible"
-    description: "Valide Values:
-O
-N
-Y
-"
+    description: "Valid Values:
+                  O
+                  N
+                  Y"
     sql: ${TABLE}.LEP_ELIGIBIL_CODE ;;
   }
 
@@ -195,10 +192,9 @@ Y
     type: string
     label: "Military Family"
     description: "Valid Values:
-  Active,
-  National Guard,
-  Reserve
-"
+                  Active,
+                  National Guard,
+                  Reserve"
     sql: ${TABLE}.MILITARY_FAMILY_DESC ;;
   }
 
@@ -206,7 +202,7 @@ Y
     type: string
     label: "Plan 504"
     description: "Y = Student qualifies as an individual with disabilities under section 504 of the Rehabilitation Act.
-N = Student does not qualify as an individual with disabilities under section 504 of the Rehabilitation Act."
+                  N = Student does not qualify as an individual with disabilities under section 504 of the Rehabilitation Act."
     sql: ${TABLE}.PLAN_504 ;;
   }
 
@@ -214,13 +210,12 @@ N = Student does not qualify as an individual with disabilities under section 50
     type: string
     label: "Poverty Code"
     description: "NULL
-0
-1
-2
-3
-F
-N
-"
+                  0
+                  1
+                  2
+                  3
+                  F
+                  N"
     sql: ${TABLE}.POVERTY_CODE ;;
   }
 

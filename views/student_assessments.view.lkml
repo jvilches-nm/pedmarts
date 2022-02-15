@@ -1,5 +1,5 @@
 view: student_assessments {
-  sql_table_name: dbo.Assessment View ;;
+  sql_table_name: dbo.Assessment_View ;;
 
   dimension: achievement_level_code {
     type: string
@@ -28,7 +28,8 @@ view: student_assessments {
   dimension: assessment_group {
     type: string
     label: "Assessment Group"
-    description: "Values:
+    description: "Test Name
+    Values:
     NULL
     ELP
     ELP Alternate
@@ -404,6 +405,7 @@ N/A"
 
   dimension: district_operational_status {
     type: string
+    hidden: yes
     sql: ${TABLE}."District Operational Status" ;;
   }
 
@@ -479,31 +481,37 @@ N/A"
 
   dimension: ell_program_eligibility_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."ELL Program Eligibility Code" ;;
   }
 
   dimension: english_proficiency {
     type: string
+    hidden: yes
     sql: ${TABLE}."English Proficiency" ;;
   }
 
   dimension: english_proficiency_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."English Proficiency Code" ;;
   }
 
   dimension: federal_form_506 {
     type: string
+    description: "Corresponds to Indian Education Grant Program, Title VI"
     sql: ${TABLE}."Federal Form 506" ;;
   }
 
   dimension: food_program_participation {
     type: string
+    description: "FRL: Yes or N"
     sql: ${TABLE}."Food Program Participation" ;;
   }
 
   dimension: food_program_participation_code {
     type: string
+    hidden:yes
     sql: ${TABLE}."Food Program Participation Code" ;;
   }
 
@@ -534,11 +542,13 @@ N/A"
 
   dimension: gifted_participation_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Gifted Participation Code" ;;
   }
 
   dimension: grade_01_location_id {
     type: string
+    hidden: yes
     sql: ${TABLE}."Grade 01 Location ID" ;;
   }
 
@@ -549,11 +559,13 @@ N/A"
 
   dimension: grade_k_location_id {
     type: string
+    hidden: yes
     sql: ${TABLE}."Grade K Location ID" ;;
   }
 
   dimension: grade_level_range {
     type: string
+    description: "Grades within school"
     sql: ${TABLE}."Grade Level Range" ;;
   }
 
@@ -589,16 +601,19 @@ N/A"
 
   dimension: homeless_status {
     type: string
+    description: "Is a Student homless?"
     sql: ${TABLE}."Homeless Status" ;;
   }
 
   dimension: homeless_status_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Homeless Status Code" ;;
   }
 
   dimension: immigrant {
     type: string
+    hidden: yes
     sql: ${TABLE}.Immigrant ;;
   }
 
@@ -1014,6 +1029,7 @@ N/A"
 
   dimension_group: school_year {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       time,
@@ -1028,6 +1044,7 @@ N/A"
 
   dimension: scoring_model {
     type: string
+    description: "Model to differnate Level of Testing (i.e, Pre K, Special Ed, Regular Assessment, interim assessment, Summative Assessment)"
     sql: ${TABLE}."Scoring Model" ;;
   }
 
@@ -1038,41 +1055,59 @@ N/A"
 
   dimension: scoring_model_name {
     type: string
+    description: "Values:
+                  Brigance
+                  Creative Curriculum
+                  Work Sampling
+                  Petition to NMPED
+                  NM Pre-K Observational Assessment
+                  Dual Discrepancy Model Assessment
+                  Teach Me to Read
+                  Lexercise
+                  Istation
+                  IDEL"
     sql: ${TABLE}."Scoring Model Name" ;;
   }
 
   dimension: section_504_status {
     type: string
+    description: "Students with Hidden or Visible Disabilities"
     sql: ${TABLE}."Section 504 Status" ;;
   }
 
   dimension: special_ed_assessment {
     type: string
+    description: "Y/N If assessment is Special Ed"
     sql: ${TABLE}."Special Ed Assessment" ;;
   }
 
   dimension: special_ed_referral {
     type: string
+    description: "Special ED IEP (Individual Education Plan)"
     sql: ${TABLE}."Special Ed Referral" ;;
   }
 
   dimension: special_ed_referral_code {
     type: string
+    description: "IEP Code"
     sql: ${TABLE}."Special Ed Referral Code" ;;
   }
 
   dimension: special_ed_status {
     type: string
+    description: "Y/N If student Special Ed"
     sql: ${TABLE}."Special Ed Status" ;;
   }
 
   dimension: special_ed_status_code {
     type: string
+    description: "Code for Special Ed level"
     sql: ${TABLE}."Special Ed Status Code" ;;
   }
 
   dimension: special_ed_transition_status {
     type: string
+    description: "Y/N IF Student leaving Special Ed"
     sql: ${TABLE}."Special Ed Transition Status" ;;
   }
 
@@ -1093,6 +1128,7 @@ N/A"
 
   dimension_group: student_birth {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       time,
@@ -1105,8 +1141,14 @@ N/A"
     sql: ${TABLE}."Student Birth Date" ;;
   }
 
+  dimension: student_age {
+    type: number
+    sql: CONVERT(INT,DATEDIFF(day,${TABLE}."Student Birth Date",GETDATE()))/365  ;;
+  }
+
   dimension: student_first_name {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student First Name" ;;
   }
 
@@ -1132,7 +1174,7 @@ N/A"
 
   dimension: student_id {
     type: string
-    # hidden: yes
+    hidden: yes
     sql: ${TABLE}."Student ID" ;;
   }
 
@@ -1143,16 +1185,19 @@ N/A"
 
   dimension: student_last_name {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Last Name" ;;
   }
 
   dimension: student_middle_initial {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Middle Initial" ;;
   }
 
   dimension: student_name {
     type: string
+    hidden: yes
     sql: ${TABLE}."Student Name" ;;
   }
 
@@ -1233,6 +1278,7 @@ N/A"
 
   dimension: student_special_program {
     type: string
+    description: "Career and Technical Education (CTE)"
     sql: ${TABLE}."Student Special Program" ;;
   }
 
@@ -1253,6 +1299,7 @@ N/A"
 
   dimension: subtest_description {
     type: string
+    description: "Subtest such as Math, ELA (English Language Assessment) or Science"
     sql: ${TABLE}."Subtest Description" ;;
   }
 
@@ -1263,6 +1310,7 @@ N/A"
 
   dimension: subtest_grade_level {
     type: string
+    description: "Grade level test was taken at"
     sql: ${TABLE}."Subtest Grade Level" ;;
   }
 
@@ -1283,26 +1331,31 @@ N/A"
 
   dimension: subtest_level {
     type: string
+    hidden: yes
     sql: ${TABLE}."Subtest Level" ;;
   }
 
   dimension: subtest_name {
     type: string
+    description: "Test Name such as SAT, or MSSA"
     sql: ${TABLE}."Subtest Name" ;;
   }
 
   dimension: subtest_subject_area {
     type: string
+    description: "Subject of Test, such as Math or Reading"
     sql: ${TABLE}."Subtest Subject Area" ;;
   }
 
   dimension: subtest_subject_area_code {
     type: string
+    description: "Subtest code such as MAT, ELA"
     sql: ${TABLE}."Subtest Subject Area Code" ;;
   }
 
   dimension_group: test_assignment {
     type: time
+    label: "Test Assignment Date"
     timeframes: [
       raw,
       time,
@@ -1317,6 +1370,7 @@ N/A"
 
   dimension: testing_accommodation {
     type: string
+    description: "Accomodation used with test (such as extended time, Text to Voice translation, enhanced color)"
     sql: ${TABLE}."Testing Accommodation" ;;
   }
 
@@ -1327,7 +1381,7 @@ N/A"
 
   dimension: title_i_location_status {
     type: string
-    label: "Title I Location Status"
+    label: "School status for Title I (Federally Finance Support)"
     description: "Values:
     NULL
     No Services
@@ -1339,6 +1393,7 @@ N/A"
 
   dimension: title_i_location_status_code {
     type: string
+    description: "Code for Title 1"
     sql: ${TABLE}."Title I Location Status Code" ;;
   }
 
@@ -1349,6 +1404,7 @@ N/A"
 
   dimension: unaccompanied_youth {
     type: string
+    description: "Y/N if youth unaccompanied. Related to homelessness demographic"
     sql: ${TABLE}."Unaccompanied Youth" ;;
   }
 
@@ -1359,6 +1415,7 @@ N/A"
 
   dimension: years_in_us_schools {
     type: number
+    description: "Total years in US School System"
     sql: ${TABLE}."Years in US Schools" ;;
   }
 

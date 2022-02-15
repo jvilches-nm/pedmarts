@@ -261,6 +261,7 @@ view: migrant_students {
 
   dimension: first_name {
     type: string
+    hidden: yes
     sql: ${TABLE}.FirstName ;;
   }
 
@@ -296,6 +297,7 @@ view: migrant_students {
 
   dimension: last_name {
     type: string
+    hidden: yes
     sql: ${TABLE}.LastName ;;
   }
 
@@ -326,6 +328,7 @@ view: migrant_students {
 
   dimension: middle_name {
     type: string
+    hidden: yes
     sql: ${TABLE}.MiddleName ;;
   }
 
@@ -420,6 +423,7 @@ view: migrant_students {
 
   dimension: ssid {
     type: string
+    hidden: yes
     sql: ${TABLE}.SSID ;;
   }
 

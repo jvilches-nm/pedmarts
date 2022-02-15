@@ -88,8 +88,6 @@ explore: student {}
 
 explore: student_assessments {}
 
-explore: student_courses {}
-
 explore: student_snapshot {
   label: "Student Snapshot"
 }

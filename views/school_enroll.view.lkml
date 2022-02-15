@@ -5,6 +5,7 @@ view: school_enroll {
     type: string
     label: "District Code"
     description: "PED 3 digit District ID"
+    hidden: yes
     sql: ${TABLE}.DISTRICT_CODE ;;
   }
 
@@ -32,6 +33,7 @@ view: school_enroll {
     type: string
     label: "School Code"
     description: "PED 3 digit School ID"
+    hidden: yes
     sql: ${TABLE}.LOCATION_ID ;;
   }
 
@@ -39,12 +41,13 @@ view: school_enroll {
     type: date
     label: "School Year"
     description: "The PED standard school year runs from July 1 through June 30. PED uses the June 30th date to designate the full school year. "
+    hidden: yes
     sql: ${TABLE}.SCHOOL_YEAR ;;
   }
 
   dimension: student_id {
     type: string
-    # hidden: yes
+    hidden: yes
     sql: ${TABLE}.STUDENT_ID ;;
   }
 

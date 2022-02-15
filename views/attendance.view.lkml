@@ -14,6 +14,7 @@ view: attendance {
     type: string
     label: "District Code"
     description: "PED defined three character district code."
+    hidden: yes
     sql: ${TABLE}.DISTRICT_CODE ;;
   }
 
@@ -21,6 +22,7 @@ view: attendance {
     type: string
     label: "District Name - Short"
     description: "The district short name. Examples: Alamogordo (vs Alamogordo Public Schools), Albuquerque (vs Albuquesrque Public Schools), "
+    hidden: yes
     sql: ${TABLE}.DISTRICT_NAME ;;
   }
 
@@ -29,6 +31,7 @@ view: attendance {
     type: string
     label: "School Code"
     description: "PED defined three character location codes. "
+    hidden: yes
     sql: ${TABLE}.LOCATION_ID ;;
   }
 
@@ -36,12 +39,14 @@ view: attendance {
     type: string
     label: "School Name"
     description: "School Name"
+    hidden: yes
     sql: ${TABLE}.LOCATION_NAME ;;
   }
 
   dimension: organization_type_desc {
     type: string
     label: "Organization Type"
+    hidden: yes
     description: "Valid values:                                                                                                               Central Office
                   Charter
                   Home School
@@ -54,6 +59,7 @@ view: attendance {
 
   dimension_group: school_year {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       date,

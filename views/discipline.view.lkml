@@ -63,6 +63,7 @@ view: discipline {
   dimension: district_code {
     type: string
     label: "District Code"
+    hidden: yes
     sql: ${TABLE}."District Code" ;;
   }
 
@@ -75,6 +76,7 @@ view: discipline {
   dimension: location_name {
     type: string
     label: "School Name"
+    hidden: yes
     sql: ${TABLE}."Full Location Name" ;;
   }
 
@@ -82,6 +84,7 @@ view: discipline {
     type: string
     label: "School Code"
     description: "PED defined three character location codes. "
+    hidden: yes
     sql: ${TABLE}."Location ID" ;;
   }
 
@@ -89,6 +92,7 @@ view: discipline {
     type: time
     label: "School Year"
     description: "The PED standard school year runs from July 1 through June 30."
+    hidden: yes
     timeframes: [
       raw,
       time,
