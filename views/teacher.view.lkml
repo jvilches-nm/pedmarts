@@ -456,6 +456,7 @@ view: teacher {
 
   dimension_group: staff_snapshot {
     type: time
+    #hidden: yes
     timeframes: [
       raw,
       time,
@@ -466,6 +467,28 @@ view: teacher {
       year
     ]
     sql: ${TABLE}."Staff Snapshot Date" ;;
+  }
+
+  dimension: snapshot_period {
+    type: string
+    label: "Snapshot Period"
+    order_by_field: snapshot_period_order
+    description: "Defines the count for which the snapshot was taken, for example 40 Day, 80 Day, 120 Day, End of Year"
+    sql:  case when month(${TABLE}."Staff Snapshot Date")=10 then '40 Day'
+               when month(${TABLE}."Staff Snapshot Date")=12 then '80 Day'
+               when month(${TABLE}."Staff Snapshot Date")=3 then '120 Day'
+               when month(${TABLE}."Staff Snapshot Date")=6 then 'End of Year'
+               when month(${TABLE}."Staff Snapshot Date")=7 then  'Open Year Round' end;;
+  }
+
+  dimension: snapshot_period_order {
+    type: number
+    hidden: yes
+    sql: case  when month(${TABLE}."Staff Snapshot Date")=10 then 1
+               when month(${TABLE}."Staff Snapshot Date")=12 then 2
+               when month(${TABLE}."Staff Snapshot Date")=3 then 3
+               when month(${TABLE}."Staff Snapshot Date")=6 then 4
+               when month(${TABLE}."Staff Snapshot Date")=7 then 4 end;;
   }
 
   dimension_group: start_date_current_year {

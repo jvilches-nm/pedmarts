@@ -78,11 +78,17 @@ explore: special_ed_snap {
   }
 }
 
-explore: ssrs_dual_credit_student_with_grade {}
+explore: ssrs_dual_credit_student_with_grade {
+  label: "Dual Credit District School Student 4 Digit Course With Grades List"
+}
 
-explore: ssrs_list_assessment_fact{}
+explore: ssrs_list_assessment_fact{
+  label: "List Assessment Fact"
+}
 
-explore: ssrs_perkins_student_listing {}
+explore: ssrs_perkins_student_listing {
+  label: "Perkins Student Listing"
+}
 
 explore: student {}
 

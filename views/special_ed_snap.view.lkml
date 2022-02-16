@@ -635,6 +635,7 @@ view: special_ed_snap {
 
   dimension_group: student_snapshot {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       time,

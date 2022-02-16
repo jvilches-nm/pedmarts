@@ -73,6 +73,7 @@ view: attendance {
 
   dimension_group: snapshot {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       time,

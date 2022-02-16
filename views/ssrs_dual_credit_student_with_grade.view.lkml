@@ -1,4 +1,5 @@
 view: ssrs_dual_credit_student_with_grade {
+  label: "Dual Credit District School Student 4 Digit Course With Grades List"
   sql_table_name: dbo.ssrs_DualCreditDistSchoolStudCourseGrade_RPT ;;
 
   dimension_group: birth {
