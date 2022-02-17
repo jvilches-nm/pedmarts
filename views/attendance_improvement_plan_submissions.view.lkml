@@ -1,6 +1,18 @@
 view: aip_submissions {
   label: "Attendance Improvement Plan Submission"
-  sql_table_name: dbo.AttendTrack_tbl_Submissions ;;
+  derived_table: {
+    sql: select a.*, y.YearDesc
+         from dbo.AttendTrack_tbl_Submissions a
+         left join dbo.AttendTrack_cd_year y
+             on a.YearID = y.YearID;;
+  }
+  #sql_table_name: dbo.AttendTrack_tbl_Submissions ;;
+
+  dimension: yeardesc {
+    type: string
+    label: "Year Desc"
+    sql: ${TABLE}.YearDesc ;;
+  }
 
   dimension: certified {
     type: string
