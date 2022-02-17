@@ -397,8 +397,9 @@ view: migrant_students {
     sql: ${TABLE}."School Name" ;;
   }
 
-  dimension_group: school_year {
+  dimension_group: school_year_end {
     type: time
+    hidden:  yes
     timeframes: [
       raw,
       time,
@@ -409,6 +410,13 @@ view: migrant_students {
       year
     ]
     sql: ${TABLE}."School Year" ;;
+  }
+
+  dimension: school_year {
+    type: string
+    label: "School Year"
+    description: "The two years that the school year spans"
+    sql: cast(YEAR(${TABLE}."School Year") +'-'+ cast(YEAR(${TABLE}."School Year") as varchar) ;;
   }
 
   dimension: spec_ed {

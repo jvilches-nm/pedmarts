@@ -46,7 +46,7 @@ explore: migrant_students {
     relationship: many_to_one
     type: left_outer
     sql_on: ${migrant_students.ssid} = ${student_snapshot.student_id}
-      and ${migrant_students.school_year_date} = ${student_snapshot.school_year_end_date};;
+      and ${migrant_students.school_year_end_date} = ${student_snapshot.school_year_end_date};;
   }
 }
 
@@ -79,7 +79,7 @@ explore: special_ed_snap {
 }
 
 explore: ssrs_dual_credit_student_with_grade {
-  label: "Dual Credit District School Student 4 Digit Course With Grades List"
+  label: "Dual Credit Course With Grades List"
 }
 
 explore: ssrs_list_assessment_fact{
