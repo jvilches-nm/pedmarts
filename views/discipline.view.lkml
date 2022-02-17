@@ -4,7 +4,7 @@ view: discipline {
   dimension: discipline_infraction {
     type: string
     label: "Infraction Description"
-    sql: ${TABLE}."Discipline Infraction" ;;
+    sql: ${TABLE}.Discipline_Infraction ;;
   }
 
   dimension: infraction_category {
@@ -25,7 +25,7 @@ view: discipline {
     description: "Valid values:
 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16,
 40, 41, 42, 43, 44, 45, 46, 51, 52, 53, 54, 55P, 55U, 55D, 56, 57, 61, 62, 63, 64, 70 "
-    sql: ${TABLE}."Discipline Infraction Code" ;;
+    sql: ${TABLE}.Discipline_Infraction_Code ;;
   }
 
   dimension: discipline_response {
@@ -42,7 +42,7 @@ view: discipline {
 10, Restraint
 11, Seclusion
 12, Called police instead of restraining or secluding student"
-    sql: ${TABLE}."Discipline Response" ;;
+    sql: ${TABLE}.Discipline_Response ;;
   }
 
   dimension: response_code {
@@ -50,34 +50,34 @@ view: discipline {
     label: "Response Code"
     description: "The primary Response Code that indicates the type of response to a discipline violation. Valid values:
 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12"
-    sql: ${TABLE}."Discipline Response Code" ;;
+    sql: ${TABLE}.Discipline_Response_Code ;;
   }
 
   dimension: response_duration {
     type: number
     label: "Response Duration"
     description: "The length, in school days, of the discipline response."
-    sql: ${TABLE}."Discipline Response Duration" ;;
+    sql: ${TABLE}.Discipline_Response_Duration ;;
   }
 
   dimension: district_code {
     type: string
     label: "District Code"
     hidden: yes
-    sql: ${TABLE}."District Code" ;;
+    sql: ${TABLE}.District_Code ;;
   }
 
   dimension: district_name_legal {
     type: string
     label: "District Legal Name"
-    sql: ${TABLE}."District Legal Name" ;;
+    sql: ${TABLE}.District_Legal_Name ;;
   }
 
   dimension: location_name {
     type: string
     label: "School Name"
     hidden: yes
-    sql: ${TABLE}."Full Location Name" ;;
+    sql: ${TABLE}.Full_Location_Name ;;
   }
 
   dimension: location_code {
@@ -85,7 +85,7 @@ view: discipline {
     label: "School Code"
     description: "PED defined three character location codes. "
     hidden: yes
-    sql: ${TABLE}."Location ID" ;;
+    sql: ${TABLE}.Location_ID ;;
   }
 
   dimension_group: school_year {
@@ -102,13 +102,13 @@ view: discipline {
       quarter,
       year
     ]
-    sql: ${TABLE}."School Year" ;;
+    sql: ${TABLE}.School_Year ;;
   }
 
   dimension: student_id {
     type: string
     hidden: yes
-    sql: ${TABLE}."Student ID" ;;
+    sql: ${TABLE}.Student_ID ;;
   }
 
   measure: count {
