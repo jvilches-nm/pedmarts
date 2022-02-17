@@ -34,9 +34,10 @@ view: foster_care {
   }
 
 
-  dimension: student_age {
+  dimension: student_age_foster_care {
     type: number
-    sql: CONVERT(INT,DATEDIFF(day,${TABLE}.DateofBirth,GETDATE()))/365  ;;
+    description: "Student age at the end of the school year, as documented in the Foster Child Matched source data"
+    sql: CONVERT(INT,DATEDIFF(day,${TABLE}.DateofBirth,${TABLE}.SchoolYear()))/365  ;;
   }
 
   dimension: fc_district_code {
@@ -175,6 +176,12 @@ view: foster_care {
       year
     ]
     sql: ${TABLE}.Stars_DOB ;;
+  }
+
+  dimension: student_age_stars {
+    type: number
+    description: "Student age at the end of the school year, as documented in STARS"
+    sql: CONVERT(INT,DATEDIFF(day,${TABLE}.DateofBirth,${TABLE}.Schoolyear))/365  ;;
   }
 
   dimension: student_name_first {
