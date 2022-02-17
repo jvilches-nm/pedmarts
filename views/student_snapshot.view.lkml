@@ -376,7 +376,8 @@ OS = Out of School"
 
   dimension: student_age {
     type: number
-    sql: CONVERT(INT,DATEDIFF(day,${TABLE}.STUD_BIRTHDATE,GETDATE()))/365  ;;
+    description: "Student age at the time of the snapshot."
+    sql: CONVERT(INT,DATEDIFF(day,${TABLE}.STUD_BIRTHDATE,${TABLE}.snapshot_date))/365  ;;
   }
 
 

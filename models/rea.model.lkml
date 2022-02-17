@@ -79,7 +79,7 @@ explore: special_ed_snap {
 }
 
 explore: ssrs_dual_credit_student_with_grade {
-  label: "Dual Credit District School Student 4 Digit Course With Grades List"
+  label: "Dual Credit Course With Grades List"
 }
 
 explore: ssrs_list_assessment_fact{

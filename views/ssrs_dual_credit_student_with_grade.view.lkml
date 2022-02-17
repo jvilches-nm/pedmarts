@@ -3,6 +3,7 @@ view: ssrs_dual_credit_student_with_grade {
   sql_table_name: dbo.ssrs_DualCreditDistSchoolStudCourseGrade_RPT ;;
 
   dimension_group: birth {
+    hidden: yes
     type: time
     timeframes: [
       raw,
@@ -14,6 +15,12 @@ view: ssrs_dual_credit_student_with_grade {
       year
     ]
     sql: ${TABLE}."Birth Date" ;;
+  }
+
+  dimension: student_age {
+    type: number
+    description: "Student age at the time of the snapshot."
+    sql: CONVERT(INT,DATEDIFF(day,${TABLE}."Birth Date",${TABLE}."Snapshot Date"))/365  ;;
   }
 
   dimension: district_code {
@@ -76,11 +83,10 @@ view: ssrs_dual_credit_student_with_grade {
     sql: ${TABLE}."Race Ethnicity" ;;
   }
 
-  dimension_group: school_year {
+  dimension_group: school_year_end {
     type: time
     timeframes: [
       raw,
-      time,
       date,
       week,
       month,
@@ -89,6 +95,13 @@ view: ssrs_dual_credit_student_with_grade {
     ]
     sql: ${TABLE}."School Year" ;;
   }
+  dimension: school_year {
+    type: string
+    label: "School Year"
+    description: "The two years that the school year spans"
+    sql: cast(YEAR(${TABLE}."School Year")-1 as varchar) +'-'+ cast(YEAR(${TABLE}."School Year") as varchar) ;;
+  }
+
 
   dimension: snap_120_day_grade_count {
     type: number
@@ -154,7 +167,6 @@ view: ssrs_dual_credit_student_with_grade {
     type: time
     timeframes: [
       raw,
-      time,
       date,
       week,
       month,
@@ -162,6 +174,26 @@ view: ssrs_dual_credit_student_with_grade {
       year
     ]
     sql: ${TABLE}."Snapshot Date" ;;
+  }
+
+  dimension: snapshot_period {
+    type: string
+    label: "Snapshot Period"
+    order_by_field: snapshot_period_order
+    description: "Defines the count for which the snapshot was taken, for example 40 Day, 80 Day, 120 Day, End of Year"
+    sql:  case when month(${TABLE}."Snapshot Date")=10 then '40 Day'
+               when month(${TABLE}."Snapshot Date")=12 then '80 Day'
+               when month(${TABLE}."Snapshot Date")=3 then '120 Day'
+               else 'End of Year' end;;
+  }
+
+  dimension: snapshot_period_order {
+    type: number
+    hidden: yes
+    sql: case when month(${TABLE}."Snapshot Date")=10 then 1
+               when month(${TABLE}."Snapshot Date")=12 then 2
+               when month(${TABLE}."Snapshot Date")=3 then 3
+               else 4 end;;
   }
 
   dimension: sped {

@@ -53,8 +53,8 @@ view: discipline {
     sql: ${TABLE}.Discipline_Response_Code ;;
   }
 
-  dimension: response_duration {
-    type: number
+  measure: response_duration {
+    type: sum
     label: "Response Duration"
     description: "The length, in school days, of the discipline response."
     sql: ${TABLE}.Discipline_Response_Duration ;;
