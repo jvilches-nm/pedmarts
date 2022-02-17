@@ -4,8 +4,11 @@ view: aip_submissions {
 
   dimension: certified {
     type: string
-    sql: ${TABLE}.Certified ;;
+    sql: case when ${TABLE}.Certified = 'True' then 'Yes'
+              when ${TABLE}.Certified = 'False' then 'No'
+              else '' end;;
   }
+
 
   dimension_group: create {
     type: time
@@ -28,8 +31,8 @@ view: aip_submissions {
   }
 
   dimension: district_code {
-    type: string
-    sql: ${TABLE}.DistrictCode ;;
+    type: number
+    sql: CAST(${TABLE}.DistrictCode AS int) ;;
   }
 
   dimension: modified_by {
@@ -58,8 +61,8 @@ view: aip_submissions {
   }
 
   dimension: school_code {
-    type: string
-    sql: ${TABLE}.SchoolCode ;;
+    type: number
+    sql: CAST(${TABLE}.SchoolCode AS int) ;;
   }
 
   dimension: type {
@@ -68,8 +71,8 @@ view: aip_submissions {
   }
 
   dimension: year_id {
-    type: string
-    sql: ${TABLE}.YearID ;;
+    type: number
+    sql: CAST(${TABLE}.YearID AS NUMERIC);;
   }
 
   measure: count {

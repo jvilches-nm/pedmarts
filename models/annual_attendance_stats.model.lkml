@@ -10,4 +10,14 @@ datagroup: annual_attendance_stats_default_datagroup {
 
 persist_with: annual_attendance_stats_default_datagroup
 
-explore: annual_attendance {}
+explore: annual_attendance {
+  join: aip_submissions {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${annual_attendance.district_code} = ${aip_submissions.district_code} and
+            ${annual_attendance.school_code}   = ${aip_submissions.school_code} and
+            ${aip_submissions.year_id} = 1;;
+  }
+}
+
+explore: annual_attendance_school_year {}

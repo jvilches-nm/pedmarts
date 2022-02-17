@@ -1,4 +1,4 @@
-view: attend_track_cd_year {
+view: annual_attendance_school_year {
   sql_table_name: dbo.AttendTrack_cd_year ;;
 
   dimension: year_desc {
@@ -7,7 +7,7 @@ view: attend_track_cd_year {
   }
 
   dimension: year_id {
-    type: string
+    type: number
     sql: ${TABLE}.YearID ;;
   }
 

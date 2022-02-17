@@ -25,8 +25,8 @@ view: annual_attendance {
   }
 
   dimension: district_code {
-    type: string
-    sql: CAST(${TABLE}.DistrictCode AS NUMERIC) ;;
+    type: number
+    sql: CAST(${TABLE}.DistrictCode AS int) ;;
   }
 
 
@@ -36,8 +36,8 @@ view: annual_attendance {
   }
 
   dimension: school_code {
-    type: string
-    sql: CAST(${TABLE}.SchoolCode AS NUMERIC);;
+    type: number
+    sql: CAST(${TABLE}.SchoolCode AS int);;
   }
 
   dimension: starsschool_year {
