@@ -306,8 +306,8 @@ view: teacher {
 
   dimension: staff_age {
     type: number
-    label: "Age"
-    sql: CONVERT(INT,DATEDIFF(day,${TABLE}."Staff Birth Date",GETDATE()))/365  ;;
+    label: "Age at time of snapshot"
+    sql: CONVERT(INT,DATEDIFF(day,${TABLE}."Staff Birth Date",${TABLE}."Staff Snapshot Date"))/365  ;;
   }
 
   dimension: staff_e_mail_address {

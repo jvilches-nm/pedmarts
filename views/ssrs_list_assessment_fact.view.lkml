@@ -31,7 +31,7 @@ view: ssrs_list_assessment_fact {
   }
 
   dimension: district_key {
-    type: number
+    type: string
     sql: ${TABLE}."DISTRICT KEY" ;;
   }
 
@@ -46,7 +46,7 @@ view: ssrs_list_assessment_fact {
   }
 
   dimension: location_key {
-    type: number
+    type: string
     sql: ${TABLE}."LOCATION KEY" ;;
   }
 
@@ -65,11 +65,10 @@ view: ssrs_list_assessment_fact {
     sql: ${TABLE}."Scaled Score" ;;
   }
 
-  dimension_group: school_year {
+  dimension_group: school_year_end {
     type: time
     timeframes: [
       raw,
-      time,
       date,
       week,
       month,
@@ -77,6 +76,13 @@ view: ssrs_list_assessment_fact {
       year
     ]
     sql: ${TABLE}."School Year" ;;
+  }
+
+  dimension: school_year {
+    type: string
+    label: "School Year"
+    description: "The two years that the school year spans"
+    sql: cast(YEAR(${TABLE}."School Year")-1 as varchar) +'-'+ cast(YEAR(${TABLE}."School Year") as varchar) ;;
   }
 
   dimension: source {
@@ -100,7 +106,8 @@ view: ssrs_list_assessment_fact {
   }
 
   dimension: student_key {
-    type: number
+    type: string
+    hidden: yes
     sql: ${TABLE}."STUDENT KEY" ;;
   }
 
@@ -121,6 +128,26 @@ view: ssrs_list_assessment_fact {
       year
     ]
     sql: ${TABLE}."Student Snapshot Date" ;;
+  }
+
+  dimension: snapshot_period {
+    type: string
+    label: "Snapshot Period"
+    order_by_field: snapshot_period_order
+    description: "Defines the count for which the snapshot was taken, for example 40 Day, 80 Day, 120 Day, End of Year"
+    sql:  case when month(${TABLE}."Student Snapshot Date")=10 then '40 Day'
+               when month(${TABLE}."Student Snapshot Date")=12 then '80 Day'
+               when month(${TABLE}."Student Snapshot Date")=3 then '120 Day'
+               else 'End of Year' end;;
+  }
+
+  dimension: snapshot_period_order {
+    type: number
+    hidden: yes
+    sql: case when month(${TABLE}."Student Snapshot Date")=10 then 1
+               when month(${TABLE}."Student Snapshot Date")=12 then 2
+               when month(${TABLE}."Student Snapshot Date")=3 then 3
+               else 4 end;;
   }
 
   dimension: subtest_identifiers {
