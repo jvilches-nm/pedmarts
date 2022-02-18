@@ -389,6 +389,7 @@ view: special_ed_snap {
 
   dimension_group: school_year {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       time,
@@ -527,6 +528,7 @@ view: special_ed_snap {
 
   dimension: student_age {
     type: number
+    hidden: yes
     sql: CONVERT(INT,DATEDIFF(day,${TABLE}."Student Birth Date",GETDATE()))/365  ;;
   }
 

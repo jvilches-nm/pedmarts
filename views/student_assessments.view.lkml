@@ -554,6 +554,7 @@ N/A"
 
   dimension: grade_02_location_id {
     type: string
+    hidden: yes
     sql: ${TABLE}."Grade 02 Location ID" ;;
   }
 
@@ -1143,7 +1144,8 @@ N/A"
 
   dimension: student_age {
     type: number
-    sql: CONVERT(INT,DATEDIFF(day,${TABLE}."Student Birth Date",GETDATE()))/365  ;;
+    description: "Student age at the end of the school year"
+    sql: CONVERT(INT,DATEDIFF(day,${TABLE}."Student Birth Date", ${TABLE}."School Year"))/365  ;;
   }
 
   dimension: student_first_name {
@@ -1174,7 +1176,6 @@ N/A"
 
   dimension: student_id {
     type: string
-    hidden: yes
     sql: ${TABLE}."Student ID" ;;
   }
 
