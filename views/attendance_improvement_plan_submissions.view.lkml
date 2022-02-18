@@ -1,9 +1,29 @@
 view: aip_submissions {
   label: "Attendance Improvement Plan Submission"
   derived_table: {
-    sql: select a.*, b.YearDesc
-         from dbo.AttendTrack_tbl_Submissions a
-         left join dbo.AttendTrack_cd_year b on a.YearID = b.YearId
+    sql:  select distinct  a.[SBID]
+      ,a.[YearID]
+    ,c.YearDesc
+      ,a.[Type]
+      ,a.[DistrictCode]
+    ,case when a.SchoolCode = 0 then d.DISTRICT_NAME
+      when a.SchoolCode <>0 then s.DISTRICT_NAME end district_name
+      ,a.[SchoolCode]
+    ,s.SchoolName
+      ,a.[Certified]
+      ,a.[CreatedBy]
+      ,a.[CreateDate]
+      ,a.[ModifiedBy]
+      ,a.[ModifiedDate]
+  from  [dbo].[AttendTrack_tbl_Submissions]  a
+  left join
+  (select distinct DISTRICT_CODE, DISTRICT_NAME from [dbo].[Stud_Snapshot]) d
+  on cast(a.[DistrictCode] as int) = cast(d.DISTRICT_CODE as int) and a.SchoolCode = 0
+  left join
+  (select distinct LOCATION_ID as School_Code, LOCATION_NAME as SchoolName, DISTRICT_CODE, DISTRICT_NAME from [dbo].[Stud_Snapshot]) s
+   on cast(a.[DistrictCode] as int) = cast(s.DISTRICT_CODE as int)
+  and   cast(a.[SchoolCode] as int) = cast(s.School_Code as int)   and  a.[SchoolCode]  <> 0
+  left join [dbo].[AttendTrack_cd_year] c on a.YearID = c.YearID
     ;;
   }
   #sql_table_name: dbo.AttendTrack_tbl_Submissions ;;
@@ -21,6 +41,17 @@ view: aip_submissions {
               else '' end;;
   }
 
+dimension: district_name {
+  type: string
+  label: "District Name"
+  sql: ${TABLE}.district_name ;;
+}
+
+  dimension: school_name {
+    type: string
+    label: "School Name"
+    sql: ${TABLE}.schoolname ;;
+  }
 
   dimension_group: create {
     type: time
