@@ -1,10 +1,10 @@
 view: aip_submissions {
   label: "Attendance Improvement Plan Submission"
   derived_table: {
-    sql: select a.*, y.YearDesc
+    sql: select a.*, b.YearDesc
          from dbo.AttendTrack_tbl_Submissions a
-         left join dbo.AttendTrack_cd_year y
-             on a.YearID = y.YearID;;
+         left join dbo.AttendTrack_cd_year b on a.YearID = b.YearId
+    ;;
   }
   #sql_table_name: dbo.AttendTrack_tbl_Submissions ;;
 

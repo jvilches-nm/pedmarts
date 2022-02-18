@@ -16,4 +16,14 @@ view: districts_list {
     sql: ${TABLE}.district_name ;;
   }
 
+  dimension: school_code {
+    type: number
+    #primary_key: yes
+    sql: cast(${TABLE}.location_id as int);;
+  }
+
+  dimension: school_name {
+    type: string
+    sql: ${TABLE}.location_name ;;
+  }
   }
