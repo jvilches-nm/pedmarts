@@ -1,5 +1,5 @@
 view: program_fact {
-  sql_table_name: dbo.[PROGRAM_FACT] ;;
+  sql_table_name: dbo.PROGRAM_FACT ;;
 
   dimension: alternate_student_id {
     type: string

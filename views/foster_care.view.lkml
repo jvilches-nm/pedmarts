@@ -1,5 +1,5 @@
 view: foster_care {
-  sql_table_name: dbo.[FC_MATCHED] ;;
+  sql_table_name: dbo.FC_MATCHED ;;
 
   dimension_group: date_created {
     type: time
