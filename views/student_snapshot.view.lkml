@@ -235,12 +235,12 @@ OS = Out of School"
     type: string
     label: "Race 1"
     description: "Primary chosen race of the student"
-    sql: sql: CASE WHEN ${TABLE}.RACE1_CODE='C' then 'Caucasian'
+    sql:  CASE WHEN ${TABLE}.RACE1_CODE='C' then 'Caucasian'
                    WHEN ${TABLE}.RACE1_CODE='B' then 'Black or African American'
                    WHEN ${TABLE}.RACE1_CODE='A' then 'Asian'
                    WHEN ${TABLE}.RACE1_CODE='I' then 'American Indian/Alaskan Native'
                    WHEN ${TABLE}.RACE1_CODE='P' then 'Native Hawaiian or Other Pacific Islander'
-                   ELSE '' ;;
+                   ELSE '' END ;;
   }
 
   dimension: race_2 {
