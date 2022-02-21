@@ -2,49 +2,55 @@ view: student_snapshot {
   sql_table_name: dbo.STUD_SNAPSHOT ;;
   label: "Student Snapshot"
 
-  dimension: current_grade_level {
+  dimension: current_grade_level_code {
     type: string
     label: "Current Grade Level Code"
     order_by_field: current_grade_level_sort
-    description: "Current grade level recorded at the time of the snapshot
-PK = Pre-Kindergarten
-KN = Kindergarten, Half-Day
-KF = Kindergarten, Full-Day
-01 = First Grade
-02 = Second Grade
-03 = Third Grade
-04 = Fourth Grade
-05 = Fifth Grade
-06 = Sixth Grade
-07 = Seventh Grade
-08 = Eighth Grade
-09 = Ninth Grade
-10 = Tenth Grade
-11 = Eleventh Grade
-12 = Twelfth Grade
-OS = Out of School"
     sql: ${TABLE}.CURR_GRADE_LVL ;;
   }
+
+dimension: current_grade_level {
+  type: string
+  label: "Current Grade Level"
+  order_by_field: current_grade_level_sort
+  sql: case when ${current_grade_level_code}='PK' then 'Pre-Kindergarten'
+              when ${current_grade_level_code}='KN' then 'Kindergarten, Half-Day'
+              when ${current_grade_level_code}='KF' then 'Kindergarten, Full-Day'
+              when ${current_grade_level_code}='01' then 'First Grade'
+              when ${current_grade_level_code}='02' then 'Second Grade'
+              when ${current_grade_level_code}='03' then 'Third Grade'
+              when ${current_grade_level_code}='04' then 'Fourth Grade'
+              when ${current_grade_level_code}='05' then 'Fifth Grade'
+              when ${current_grade_level_code}='06' then 'Sixth Grade'
+              when ${current_grade_level_code}='07' then 'Seventh Grade'
+              when ${current_grade_level_code}='08' then 'Eighth Grade'
+              when ${current_grade_level_code}='09' then 'Ninth Grade'
+              when ${current_grade_level_code}='10' then 'Tenth Grade'
+              when ${current_grade_level_code}='11' then 'Eleventh Grade'
+              when ${current_grade_level_code}='12' then 'Twelfth Grade'
+              when ${current_grade_level_code}='OS' then 'Out of School'
+               end ;;
+}
 
   dimension: current_grade_level_sort {
     type: number
     hidden: yes
-    sql: case when ${current_grade_level}='PK' then 1
-              when ${current_grade_level}='KN' then 2
-              when ${current_grade_level}='KF' then 3
-              when ${current_grade_level}='01' then 4
-              when ${current_grade_level}='02' then 5
-              when ${current_grade_level}='03' then 6
-              when ${current_grade_level}='04' then 7
-              when ${current_grade_level}='05' then 8
-              when ${current_grade_level}='06' then 9
-              when ${current_grade_level}='07' then 10
-              when ${current_grade_level}='08' then 11
-              when ${current_grade_level}='09' then 12
-              when ${current_grade_level}='10' then 13
-              when ${current_grade_level}='11' then 14
-              when ${current_grade_level}='12' then 15
-              when ${current_grade_level}='OS' then 16
+    sql: case when ${current_grade_level_code}='PK' then 1
+              when ${current_grade_level_code}='KN' then 2
+              when ${current_grade_level_code}='KF' then 3
+              when ${current_grade_level_code}='01' then 4
+              when ${current_grade_level_code}='02' then 5
+              when ${current_grade_level_code}='03' then 6
+              when ${current_grade_level_code}='04' then 7
+              when ${current_grade_level_code}='05' then 8
+              when ${current_grade_level_code}='06' then 9
+              when ${current_grade_level_code}='07' then 10
+              when ${current_grade_level_code}='08' then 11
+              when ${current_grade_level_code}='09' then 12
+              when ${current_grade_level_code}='10' then 13
+              when ${current_grade_level_code}='11' then 14
+              when ${current_grade_level_code}='12' then 15
+              when ${current_grade_level_code}='OS' then 16
               else 17 end ;;
   }
 
@@ -81,29 +87,35 @@ OS = Out of School"
   dimension: economic_code {
     type: string
     label: "Economic Code"
-    description: ""
+    description: "Identifies if a student recieve Free or Reduced Lunch"
     sql: ${TABLE}.ECONOMIC_CODE ;;
   }
 
-  dimension: eng_prof_code {
+  dimension: english_prof_code {
     type: string
     label: "English Proficiency Code"
-    description: "NT = Not tested (Only for PreK as they can’t be tested)
-0 =  IFEP (Initially Fluent English Proficient Student was never EL)
-1 = Current ELL/EL Student
-2 = RFEP 1 (Reclassified Fluent English Proficient-exited Year 1)
-3 = RFEP 2 (Reclassified Fluent English Proficient-exited Year 2)
-4 = RFEP 3 (Reclassified Fluent English Proficient -exited Year 3)
-5 = RFEP 4 (Reclassified Fluent English Proficient -exited Year 4)
-6 = RFEP 5+ (Reclassified Fluent English Proficient -exited Year 5+)"
+    order_by_field: english_prof_code_sort
     #hidden: yes
     sql: ${TABLE}.ENG_PROF_CODE ;;
+  }
+
+  dimension: english_prof_code_sort {
+    type: number
+    hidden: yes
+    sql: case when ${english_prof_code}='NT' then 1
+              when ${english_prof_code}='0' then 2
+              when ${english_prof_code}='1' then 3
+              when ${english_prof_code}='2' then 4
+              when ${english_prof_code}='3' then 5
+              when ${english_prof_code}='4' then 6
+              when ${english_prof_code}='5' then 7
+              when ${english_prof_code}='6' then 8
+              end ;;
   }
 
   dimension: eng_proficiency {
     type: string
     label: "English Proficiency"
-    description: ""
     sql: ${TABLE}.ENG_PROFICIENCY ;;
   }
 
@@ -162,7 +174,8 @@ OS = Out of School"
   dimension: lep_eligibil_code {
     type: string
     label: "LEP Eligible"
-    description: ""
+    description: "Limited English Proficiency"
+    hidden: yes
     sql: ${TABLE}.LEP_ELIGIBIL_CODE ;;
   }
 
@@ -191,7 +204,6 @@ OS = Out of School"
   dimension: migrant_code {
     type: string
     label: "Migrant"
-    description: ""
     hidden: yes
     sql: ${TABLE}.MIGRANT_CODE ;;
   }
@@ -308,7 +320,7 @@ OS = Out of School"
   dimension: school_year_end_date {
     type: date
     description: "The last day in the school year"
-    #hidden: yes
+    hidden: yes
     sql: ${TABLE}.SCHOOL_YEAR ;;
   }
 
@@ -356,7 +368,7 @@ OS = Out of School"
   dimension: special_ed_code {
     type: string
     label: "Special Education"
-    description: "Y/N = Student is or is not a student with disabilities (Primary or Secondary)"
+    description: "Y/N  = Students with Disabilities (Primary or Secondary) or Regular Education and Gifted-only Students"
     sql: ${TABLE}.SPECIAL_ED_CODE ;;
   }
 
@@ -409,7 +421,7 @@ OS = Out of School"
     type: string
     label: "Student ID"
     description: "State issued student identification number. "
-    # hidden: yes
+    hidden: yes
     sql: ${TABLE}.STUDENT_ID ;;
   }
 
@@ -447,13 +459,7 @@ OS = Out of School"
   dimension: years_us_schools {
     type: number
     label: "Years In US Schools"
-    description: "0 = 1st year a student attending US Schools (less than 12 months).
-1 = 2nd consecutive year attending US Schools.
-2 = 3rd consecutive year attending US Schools.
-3 = 4th consecutive year attending US Schools.
-4 = 5th consecutive year attending US Schools.
-5 = A student has more than 5 consecutive years in US Schools.
-"
+    description: "Provides an indication on whether or not the student has been enrolled in U.S. schools for 12 months. The months do NOT have to be consecutive.  Any school (public, private, BIE, or home) qualifies. PreK does not count toward the time."
     sql: ${TABLE}.YEARS_US_SCHOOLS ;;
   }
 
