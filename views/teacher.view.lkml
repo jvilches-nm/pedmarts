@@ -11,30 +11,7 @@ view: teacher {
   dimension: assignment_category {
     type: string
     label: "Assignment Category"
-    description: " Grouping of Staff Assignment Codes
-    A. Administrators
-       10, 11, 12, 13, 36
-    B. Educational Assistant
-       31, 31I, 32, 32I,33, 33I, 34, 34S, 34I, 34IS
-    C. Healthcare
-       01, 03, 07, 70
-    D. Media Specialist
-       76, 77, 78
-    E. Non-Certified Personnel
-      All Other Non-Certified Support Staff – Maintenance, Transportation, Food Service, IT, Facilities, Non-Certified Supervisors or Directors,Non-Certified Administrative Support Staff, Non-Certified School Support Staff
-    F. Other Personnel
-
-    G. Principals
-
-    H. Related Service Personnel For Special Education (6-21 Year Olds)
-
-    I. Related Service Personnel For Special Education (3-5 Year Olds)
-
-    J. School Counselor
-
-    K. Supervisors, Directors or Managers
-
-    L.Teachers"
+    description: ""
     sql: ${TABLE}."Assignment Category" ;;
 
   }
@@ -46,7 +23,7 @@ view: teacher {
     sql: ${TABLE}."Assignment Code" ;;
   }
 
-  dimension_group: assignment {
+  dimension_group: assignment_date {
     type: time
     label: "Assignment Date"
     description: "Indicator of report date."
@@ -87,6 +64,7 @@ view: teacher {
 
   dimension: certification_area_category {
     type: string
+    hidden: yes
     sql: ${TABLE}."Certification Area Category" ;;
   }
 
@@ -155,11 +133,13 @@ view: teacher {
 
   dimension: certification_subject_area {
     type: string
+    hidden: yes
     sql: ${TABLE}."Certification Subject Area" ;;
   }
 
   dimension: certification_subject_area_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Certification Subject Area Code" ;;
   }
 
@@ -210,6 +190,7 @@ view: teacher {
 
   dimension: highest_degree_earned {
     type: string
+    description: "Highest degree earned by the staff member."
     sql: ${TABLE}."Highest Degree Earned" ;;
   }
 
@@ -230,16 +211,21 @@ view: teacher {
 
   dimension: location_id {
     type: string
+    label: "Location Code"
+    description: "PED defined three character location code of staff member's primary location."
     sql: ${TABLE}."Location ID" ;;
   }
 
   dimension: location_legal_name {
     type: string
+    label: "School Name"
     sql: ${TABLE}."Location Legal Name" ;;
   }
 
   dimension_group: original_hire {
     type: time
+    label: "Original Hire Date"
+    description: "Date when employee was first hired at the school district or state charter."
     timeframes: [
       raw,
       time,
@@ -254,21 +240,28 @@ view: teacher {
 
   dimension: percentage_of_time_assigned {
     type: number
+    description: "The portion of the staff member’s time that is allocated to the assignment."
     sql: ${TABLE}."Percentage of Time Assigned" ;;
   }
 
   dimension: primary_location_id {
     type: string
+    label: "Primary Location Code"
+    description: "PED defined three character location code of staff member's primary location.
+                  This is either a PED location (school) code, or sometimes the district location code = 000"
     sql: ${TABLE}."Primary Location ID" ;;
   }
 
   dimension: primary_location_name {
     type: string
+    label: "Primary Location Name"
+    description: "Location (school) name. Either a PED location (school) name, or sometimes the district name if location code = 000"
     sql: ${TABLE}."Primary Location Name" ;;
   }
 
   dimension_group: school_year_date {
     type: time
+    description: "The school year is documented with the last day in the school year."
     hidden: yes
     timeframes: [
       raw,
@@ -332,11 +325,13 @@ view: teacher {
 
   dimension: staff_exit_reason {
     type: string
+    label: "Termination Reason"
     sql: ${TABLE}."Staff Exit Reason" ;;
   }
 
   dimension: staff_exit_reason_code {
     type: string
+    label: "Termination Reason Code"
     sql: ${TABLE}."Staff Exit Reason Code" ;;
   }
 
@@ -391,6 +386,7 @@ view: teacher {
 
   dimension: staff_race_1_or_ethnicity {
     type: string
+    description: "Primary chosen race"
     sql: ${TABLE}."Staff Race 1 or Ethnicity" ;;
   }
 
@@ -401,6 +397,7 @@ view: teacher {
 
   dimension: staff_race_2 {
     type: string
+    description: "Secondary chosen race of Staff"
     sql: ${TABLE}."Staff Race 2" ;;
   }
 
@@ -411,6 +408,7 @@ view: teacher {
 
   dimension: staff_race_3 {
     type: string
+    description: "Third chosen race of Staff"
     sql: ${TABLE}."Staff Race 3" ;;
   }
 
@@ -421,6 +419,7 @@ view: teacher {
 
   dimension: staff_race_4 {
     type: string
+    description: "Fourth chosen race of Staff"
     sql: ${TABLE}."Staff Race 4" ;;
   }
 
@@ -431,11 +430,13 @@ view: teacher {
 
   dimension: staff_race_5 {
     type: string
+    description: "Fifth chosen race of Staff"
     sql: ${TABLE}."Staff Race 5" ;;
   }
 
   dimension: staff_race_5_code {
     type: string
+    hidden: yes
     sql: ${TABLE}."Staff Race 5 Code" ;;
   }
 
@@ -446,11 +447,38 @@ view: teacher {
 
   dimension: staff_race_or_ethnicity_subgroup {
     type: string
-    sql: ${TABLE}."Staff Race or Ethnicity Subgroup" ;;
+    description: "The primary New Mexico Tribe or Pueblo with which the staff member is affiliated."
+    sql: case when ${staff_race_or_ethnicity_subgroup_code} = '00' then 'Not Applicable'
+              when ${staff_race_or_ethnicity_subgroup_code} = '01' then 'Acoma'
+              when ${staff_race_or_ethnicity_subgroup_code} = '02' then 'Cochiti'
+              when ${staff_race_or_ethnicity_subgroup_code} = '03' then 'Isleta'
+              when ${staff_race_or_ethnicity_subgroup_code} = '04' then 'Jemez'
+              when ${staff_race_or_ethnicity_subgroup_code} = '05' then 'Jicarilla Apache'
+              when ${staff_race_or_ethnicity_subgroup_code} = '06' then 'Laguna'
+              when ${staff_race_or_ethnicity_subgroup_code} = '07' then 'Mescalero Apache'
+              when ${staff_race_or_ethnicity_subgroup_code} = '08' then 'Nambe'
+              when ${staff_race_or_ethnicity_subgroup_code} = '09' then 'Navajo'
+              when ${staff_race_or_ethnicity_subgroup_code} = '10' then 'Picuris'
+              when ${staff_race_or_ethnicity_subgroup_code} = '11' then 'Pojoaque'
+              when ${staff_race_or_ethnicity_subgroup_code} = '12' then 'San Felipe'
+              when ${staff_race_or_ethnicity_subgroup_code} = '13' then 'San Ildefonso'
+              when ${staff_race_or_ethnicity_subgroup_code} = '14' then 'Ohkay Owingeh (formerly San Juan)'
+              when ${staff_race_or_ethnicity_subgroup_code} = '15' then 'Sandia'
+              when ${staff_race_or_ethnicity_subgroup_code} = '16' then 'Santa Ana'
+              when ${staff_race_or_ethnicity_subgroup_code} = '17' then 'Santa Clara'
+              when ${staff_race_or_ethnicity_subgroup_code} = '18' then 'Kewa (formerly Santo Domingo)'
+              when ${staff_race_or_ethnicity_subgroup_code} = '19' then 'Taos'
+              when ${staff_race_or_ethnicity_subgroup_code} = '20' then 'Tesuque'
+              when ${staff_race_or_ethnicity_subgroup_code} = '21' then 'Zia'
+              when ${staff_race_or_ethnicity_subgroup_code} = '22' then 'Zuni'
+              when ${staff_race_or_ethnicity_subgroup_code} = '23' then 'Other'
+              end
+              ;;
   }
 
   dimension: staff_race_or_ethnicity_subgroup_code {
     type: string
+    description: "The primary New Mexico Tribe or Pueblo with which the staff member is affiliated."
     sql: ${TABLE}."Staff Race or Ethnicity Subgroup Code" ;;
   }
 
@@ -493,6 +521,8 @@ view: teacher {
 
   dimension_group: start_date_current_year {
     type: time
+    label: "Staff Start Date - Current School Year"
+    description: "This is the date the staff member’s contract started for the current school year. This date changes with each school year."
     timeframes: [
       raw,
       time,
@@ -512,16 +542,23 @@ view: teacher {
 
   dimension: state_location_id {
     type: string
+    label: "State Location ID"
     sql: ${TABLE}."State Location ID" ;;
   }
 
   dimension: total_years_of_experience {
     type: number
+    label: "Total Years of Experience"
+    description: "The number of years that the staff member has been employed by any school district in any state as a TEACHER or PRINCIPAL (including their current district).
+                  Excludes “Substitute Teaching” years experience."
     sql: ${TABLE}."Total Years of Experience" ;;
   }
 
   dimension: total_years_of_experience_in_district {
     type: number
+    label: "Total Years of Experience in District"
+    description: "Total number of years that the staff member has been employed by the current school district as a TEACHER or PRINCIPAL.
+                  Excludes “Substitute Teaching” years experience."
     sql: ${TABLE}."Total Years of Experience in District" ;;
   }
 
