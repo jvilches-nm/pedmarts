@@ -240,6 +240,7 @@ view: teacher {
 
   dimension: percentage_of_time_assigned {
     type: number
+    label: "Percent Time Assigned"
     description: "The portion of the staff member’s time that is allocated to the assignment."
     sql: ${TABLE}."Percentage of Time Assigned" ;;
   }
