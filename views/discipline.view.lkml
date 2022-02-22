@@ -22,26 +22,13 @@ view: discipline {
   dimension: infraction_code {
     type: string
     label: "Infraction Code"
-    description: "Valid values:
-1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16,
-40, 41, 42, 43, 44, 45, 46, 51, 52, 53, 54, 55P, 55U, 55D, 56, 57, 61, 62, 63, 64, 70 "
+    description: "Provide the primary Infraction Code that indicates the type of discipline violation. "
     sql: ${TABLE}.Discipline_Infraction_Code ;;
   }
 
   dimension: discipline_response {
     type: string
     label: "Response Description"
-    description: "1, Arrest/referral to justice system
-2, In school suspension (does not include Lunch, Before/After School Detentions)
-3, Out of school suspension  (does not include Lunch, Before/After School Detentions)
-4, Expulsion - no educational services – REGULAR ED ONLY; NOT to be used for Special Ed students)
-5, Modified Expulsion (still receiving some educational services)
-6, Sent to alternate setting by school personnel
-7, Sent to alternate setting based on hearing officer determination of likely injury
-8, Other/Unknown
-10, Restraint
-11, Seclusion
-12, Called police instead of restraining or secluding student"
     sql: ${TABLE}.Discipline_Response ;;
   }
 
