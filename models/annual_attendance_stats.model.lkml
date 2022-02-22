@@ -2,6 +2,7 @@ connection: "dm_rea"
 
 # include all the views
 include: "/views/**/*.view"
+include: "/**/annual_attendance_report.dashboard"
 
 datagroup: annual_attendance_stats_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;

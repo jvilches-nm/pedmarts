@@ -42,7 +42,15 @@ view: annual_attendance {
 
   dimension: starsschool_year {
     type: date
+    hidden: yes
     sql: ${TABLE}.STARSSchoolYear ;;
+  }
+
+  dimension: school_year {
+    type: string
+    label: "School Year"
+    description: "The two years that the school year spans"
+    sql: cast(YEAR(${TABLE}.STARSSchoolYear)-1 as varchar) +'-'+ cast(YEAR(${TABLE}.STARSSchoolYear) as varchar) ;;
   }
 
   dimension: sub_pop_item_code {
