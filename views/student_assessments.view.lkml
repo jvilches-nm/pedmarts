@@ -1030,7 +1030,7 @@ N/A"
 
   dimension_group: school_year {
     type: time
-    hidden: yes
+    #hidden: yes
     timeframes: [
       raw,
       time,
