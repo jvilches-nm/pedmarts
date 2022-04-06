@@ -1,5 +1,5 @@
 view: highschool_cohort_outcomes {
-  sql_table_name: dbo.hsco ;;
+  sql_table_name: dbo.HSCO_tbl ;;
 
   dimension: assuarence {
     type: string
