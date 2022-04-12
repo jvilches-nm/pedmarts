@@ -307,7 +307,8 @@ dimension: current_grade_level {
     type: string
     label: "Derived Ethnicity"
     description: "Derived Ethnicity"
-    sql: ${TABLE}.RPTG_RACE_ETHNICITY_DESC ;;
+    sql: CASE WHEN ${TABLE}.RPTG_RACE_ETHNICITY_DESC = 'Native Hawaiiam or Other Pacific Islander' then 'Native Hawaiian or Other Pacific Islander'
+    ELSE ${TABLE}.RPTG_RACE_ETHNICITY_DESC END ;;
   }
 
   dimension: school_type_code {
