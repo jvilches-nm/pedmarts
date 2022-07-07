@@ -41,58 +41,58 @@ view: grad_data {
     sql: ${TABLE}.Schname ;;
   }
 
-  dimension: sy2011 {
-    type: string
+  measure: sy2011 {
+    type: sum
     sql: ${TABLE}.SY2011 ;;
   }
 
-  dimension: sy2012 {
-    type: string
+  measure: sy2012 {
+    type: sum
     sql: ${TABLE}.SY2012 ;;
   }
 
-  dimension: sy2013 {
-    type: string
+  measure: sy2013 {
+    type: sum
     sql: ${TABLE}.SY2013 ;;
   }
 
-  dimension: sy2014 {
-    type: number
+  measure: sy2014 {
+    type: sum
     sql: ${TABLE}.SY2014 ;;
   }
 
-  dimension: sy2015 {
-    type: number
+  measure: sy2015 {
+    type: sum
     sql: ${TABLE}.SY2015 ;;
   }
 
-  dimension: sy2016 {
-    type: string
+  measure: sy2016 {
+    type: sum
     sql: ${TABLE}.SY2016 ;;
   }
 
-  dimension: sy2017 {
-    type: string
+  measure: sy2017 {
+    type: sum
     sql: ${TABLE}.SY2017 ;;
   }
 
-  dimension: sy2018 {
-    type: string
+  measure: sy2018 {
+    type: sum
     sql: ${TABLE}.SY2018 ;;
   }
 
-  dimension: sy2019 {
-    type: string
+  measure: sy2019 {
+    type: sum
     sql: ${TABLE}.SY2019 ;;
   }
 
-  dimension: sy2020 {
-    type: string
+  measure: sy2020 {
+    type: sum
     sql: ${TABLE}.SY2020 ;;
   }
 
-  dimension: sy2021 {
-    type: string
+  measure: sy2021 {
+    type: sum
     sql: ${TABLE}.SY2021 ;;
   }
 
