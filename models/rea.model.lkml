@@ -94,6 +94,10 @@ explore: student {}
 
 explore: student_assessments {}
 
+explore: grad_data {}
+
+explore: grad_student {}
+
 explore: student_snapshot {
   label: "Student Snapshot"
 }
