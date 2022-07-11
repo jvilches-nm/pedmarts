@@ -22,8 +22,8 @@ view: grad_student {
     sql: ${TABLE}.DistCode ;;
   }
 
-  dimension: excluded {
-    type: number
+  measure: excluded {
+    type: sum
     sql: ${TABLE}.Excluded ;;
   }
 
@@ -32,8 +32,8 @@ view: grad_student {
     sql: ${TABLE}.FirstName ;;
   }
 
-  dimension: graduated {
-    type: number
+  measure: graduated {
+    type: sum
     sql: ${TABLE}.Graduated ;;
   }
 
@@ -47,13 +47,13 @@ view: grad_student {
     sql: ${TABLE}.Location_ID ;;
   }
 
-  dimension: nongrad {
-    type: number
+  measure: nongrad {
+    type: sum
     sql: ${TABLE}.Nongrad ;;
   }
 
   dimension: num_snapshots {
-    type: string
+    type: number
     sql: ${TABLE}.NumSnapshots ;;
   }
 
@@ -67,8 +67,8 @@ view: grad_student {
     sql: ${TABLE}.Outcome_Desc ;;
   }
 
-  dimension: saunits {
-    type: number
+  measure: saunits {
+    type: sum
     sql: ${TABLE}.SAUnits ;;
   }
 
