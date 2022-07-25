@@ -92,11 +92,19 @@ explore: ssrs_perkins_student_listing {
 
 explore: student {}
 
+explore: schools_csi {}
+
 explore: student_assessments {}
 
-explore: grad_data {}
+explore: grad_student {
+  join: student {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${grad_student.student_id} = ${student.student_id}
+      and ${grad_student.cohort_sy} = ${student.school_year_year};;
+  }
 
-explore: grad_student {}
+}
 
 explore: student_snapshot {
   label: "Student Snapshot"
