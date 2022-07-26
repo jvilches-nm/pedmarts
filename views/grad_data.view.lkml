@@ -1,5 +1,5 @@
-view: graddata_overall {
-  sql_table_name: REA.graddata_overall ;;
+view: grad_data {
+  sql_table_name: REA.grad_data ;;
   label: "Annual Graduation"
 
   dimension: aigid {
@@ -9,6 +9,7 @@ view: graddata_overall {
 
   dimension: demographic {
     type: string
+    label: "Student Demographic Group"
     sql: ${TABLE}.Demographic ;;
   }
 
@@ -29,6 +30,7 @@ view: graddata_overall {
 
   dimension: metric {
     type: string
+    label: "Graduation metric - rate, graduates (numerator), cohort size (denominator)"
     sql: ${TABLE}.Metric ;;
   }
 
@@ -45,11 +47,13 @@ view: graddata_overall {
   dimension: sy {
     type: string
     label: "School Year"
+    description: "Last calendar year of the school year"
     sql: ${TABLE}.SY ;;
   }
 
   dimension: value {
-    type: string
+    type: number
+
     sql: ${TABLE}.Value ;;
   }
 

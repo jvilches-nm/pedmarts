@@ -96,6 +96,8 @@ explore: schools_csi {}
 
 explore: student_assessments {}
 
+explore: proficiencies {}
+
 explore: grad_student {
   join: student {
     relationship: many_to_one
@@ -105,6 +107,8 @@ explore: grad_student {
   }
 
 }
+
+explore: grad_data {}
 
 explore: student_snapshot {
   label: "Student Snapshot"

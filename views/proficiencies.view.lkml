@@ -13,6 +13,8 @@ view: proficiencies {
 
   dimension: group_keyword {
     type: string
+    label: "Student Demographic Group"
+    description: "Student population demographic group"
     sql: ${TABLE}.Group_Keyword ;;
   }
 
@@ -23,11 +25,14 @@ view: proficiencies {
 
   dimension: metric {
     type: string
+    label: "Proficiency Subject"
+    description: "Proficiency subject - read/math/science"
     sql: ${TABLE}.Metric ;;
   }
 
   dimension: proficiency {
     type: number
+    value_format: "0.0\%"
     sql: ${TABLE}.Proficiency ;;
   }
 
@@ -43,11 +48,14 @@ view: proficiencies {
 
   dimension: sy {
     type: number
+    label: "School Year"
+    description: "Second calendar year of the school year"
     sql: ${TABLE}.SY ;;
   }
 
   measure: count {
     type: count
+    hidden: yes
     drill_fields: [sch_name, dist_name]
   }
 }

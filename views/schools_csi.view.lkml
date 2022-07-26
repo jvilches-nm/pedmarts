@@ -62,21 +62,27 @@ view: schools_csi {
 
   dimension: sch_name {
     type: string
+    label: "School Name"
     sql: ${TABLE}.SchName ;;
   }
 
   dimension: sch_numb {
     type: string
+    label: "School Number"
+    description: "District number and school number concatenated."
     sql: ${TABLE}.SchNumb ;;
   }
 
   dimension: sch_type {
     type: string
+    label: "School Type"
     sql: ${TABLE}.SchType ;;
   }
 
   dimension: sy {
     type: number
+    label: "School Year"
+    description: "Ending year of the school year"
     sql: ${TABLE}.SY ;;
   }
 
