@@ -66,7 +66,7 @@ view: schools_csi {
   }
 
   dimension: sch_numb {
-    type: number
+    type: string
     sql: ${TABLE}.SchNumb ;;
   }
 
