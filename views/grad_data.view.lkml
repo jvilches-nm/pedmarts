@@ -51,7 +51,7 @@ view: grad_data {
     sql: ${TABLE}.SY ;;
   }
 
-  dimension: value {
+  measure: value {
     type: number
 
     sql: ${TABLE}.Value ;;
