@@ -30,7 +30,7 @@ view: proficiencies {
     sql: ${TABLE}.Metric ;;
   }
 
-  dimension: proficiency {
+  measure: proficiency {
     type: number
     value_format: "0.0\%"
     sql: ${TABLE}.Proficiency ;;
