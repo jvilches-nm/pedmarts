@@ -52,7 +52,7 @@ view: grad_data {
   }
 
   measure: value {
-    type: number
+    type: max
 
     sql: ${TABLE}.Value ;;
   }

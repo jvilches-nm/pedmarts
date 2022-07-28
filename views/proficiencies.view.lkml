@@ -31,7 +31,7 @@ view: proficiencies {
   }
 
   measure: proficiency {
-    type: number
+    type: max
     value_format: "0.0\%"
     sql: ${TABLE}.Proficiency ;;
   }
