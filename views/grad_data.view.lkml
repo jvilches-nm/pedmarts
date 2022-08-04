@@ -15,22 +15,26 @@ view: grad_data {
 
   dimension: dist_code {
     type: number
+    hidden: yes
     sql: ${TABLE}.DistCode ;;
   }
 
   dimension: dist_name {
     type: string
+    hidden: no
     sql: ${TABLE}.DistName ;;
   }
 
   dimension: location_id {
     type: string
+    hidden: yes
     sql: ${TABLE}.Location_ID ;;
   }
 
   dimension: metric {
     type: string
-    label: "Graduation metric - rate, graduates (numerator), cohort size (denominator)"
+    label: "Graduation Metric"
+    description: "Graduation metric - rate, graduates (numerator), cohort size (denominator)"
     sql: ${TABLE}.Metric ;;
   }
 

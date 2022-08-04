@@ -108,10 +108,29 @@ explore: grad_student {
 
 }
 
-explore: grad_data {}
+explore: grad_data {
+  join: districts {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: format(${grad_data.dist_code}, '000')=${districts.district_code}
+       and ${grad_data.sy}=year(${districts.school_year_end_date})};;
+  }
+  join: locations {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: format(${grad_data.dist_code},'000')=${locations.district_code}
+    and format(${grad_data.location_id}, '000')=${locations.location_id}
+    and ${grad_data.sy}=year(${locations.school_year_end_date});;
+  }
+}
 
 explore: student_snapshot {
   label: "Student Snapshot"
 }
 
 explore: teacher {}
+
+map_layer: my_district_layer {
+  file: "/dist_map.topojson"
+  property_key: "name"
+}
