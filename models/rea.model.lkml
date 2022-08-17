@@ -108,12 +108,56 @@ explore: grad_student {
 
 }
 
+explore: assessment_student {
+  join: student_snapshot {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${assessment_student.student_id} = ${student_snapshot.student_id}
+      and ${assessment_student.year} = year(${student_snapshot.school_year_end_date});;
+  }
+  join: districts {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: format(${assessment_student.dist_code}, '000') = ${districts.district_code}
+       and ${assessment_student.year} = year(${districts.school_year_end_date}) ;;
+  }
+  join: locations {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: format(${assessment_student.dist_code},'000')=${locations.district_code}
+          and format(${assessment_student.schnumb}-(${assessment_student.dist_code}*1000), '000')=${locations.location_id}
+          and ${assessment_student.year}=year(${locations.school_year_end_date});;
+  }
+}
+
+explore: attendance_student {
+  join: student_snapshot {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${attendance_student.student_id} = ${student_snapshot.student_id}
+      and ${attendance_student.year} = year(${student_snapshot.school_year_end_date});;
+  }
+  join: districts {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: format(${attendance_student.district_code}, '000') = ${districts.district_code}
+      and ${attendance_student.year} = year(${districts.school_year_end_date}) ;;
+  }
+  join: locations {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: format(${attendance_student.district_code},'000')=${locations.district_code}
+          and format(${attendance_student.location_id}, '000')=${locations.location_id}
+          and ${attendance_student.year}=year(${locations.school_year_end_date});;
+  }
+}
+
 explore: grad_data {
   join: districts {
     relationship: many_to_one
     type: left_outer
     sql_on: format(${grad_data.dist_code}, '000')=${districts.district_code}
-       and ${grad_data.sy}=year(${districts.school_year_end_date})};;
+       and ${grad_data.sy}=year(${districts.school_year_end_date});;
   }
   join: locations {
     relationship: many_to_one
