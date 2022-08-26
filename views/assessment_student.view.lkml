@@ -36,8 +36,14 @@ view: assessment_student {
     sql: ${TABLE}.PL ;;
   }
 
+  dimension: proficient_flag {
+    type: string
+    description: "Student is proficient - yes/no"
+    sql: case when ${TABLE}.Proficient=1 then 'Yes' else 'No' end ;;
+  }
+
   measure: proficient {
-    type: yesno
+    type: sum
     sql: ${TABLE}.Proficient ;;
   }
 
