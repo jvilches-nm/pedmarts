@@ -47,6 +47,11 @@ view: assessment_student {
     sql: ${TABLE}.Proficient ;;
   }
 
+  measure: not_proficient {
+    type: sum
+    sql: ${TABLE}.NotProficient ;;
+  }
+
   dimension: scale_score {
     type: number
     label: "Scaled Score"
