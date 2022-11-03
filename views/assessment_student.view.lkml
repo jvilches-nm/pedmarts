@@ -100,7 +100,8 @@ view: assessment_student {
   }
 
   dimension: year {
-    type: string
+    type: number
+    value_format: "####"
     sql: ${TABLE}.Year ;;
   }
 
